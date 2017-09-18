@@ -1,0 +1,28 @@
+<%= form_for @superadmin do |form| %>
+    <% if superadmin.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(superadmin.errors.count, "error") %> prohibited this superadmin from being saved:</h2>
+
+          <ul>
+            <% superadmin.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <p>
+      <%= form.label :username %><br>
+      <%= form.text_field :username %>
+    </p>
+
+    <p>
+      <%= form.label :password %><br>
+      <%= password_field(:superadmin, :password, size: 20) %>
+    </p>
+
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+<% end %>

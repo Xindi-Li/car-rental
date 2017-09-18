@@ -1,0 +1,402 @@
+Started GET "/" for 127.0.0.1 at 2017-09-17 22:56:35 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered C:/RailsInstaller/Ruby2.3.0/lib/ruby/gems/2.3.0/gems/railties-5.1.4/lib/rails/templates/rails/welcome/index.html.erb (4.0ms)
+Completed 200 OK in 373ms (Views: 44.5ms)
+
+
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 22:56:44 -0400
+Processing by SuperadminsController#index as HTML
+Completed 500 Internal Server Error in 2ms
+
+
+  
+NameError (uninitialized constant SuperadminsController::Superadmin):
+  
+app/controllers/superadmins_controller.rb:7:in `index'
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 22:57:04 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  Rendered superadmins/index.html.erb within layouts/application (9.0ms)
+Completed 500 Internal Server Error in 39ms
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10:   </thead>
+    11: 
+    12:   <tbody>
+    13:     <% @superadmins.each do |superadmin| %>
+    14:       <tr>
+    15:         <td><%= link_to 'Show', superadmin %></td>
+    16:         <td><%= link_to 'Edit', edit_superadmin_path(superadmin) %></td>
+  
+app/views/superadmins/index.html.erb:13:in `_app_views_superadmins_index_html_erb___917604801_43069548'
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:03:14 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  Rendered superadmins/index.html.erb within layouts/application (7.0ms)
+Completed 500 Internal Server Error in 34ms
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10:   </thead>
+    11: 
+    12:   <tbody>
+    13:     <% @superadmins.each do |superadmin| %>
+    14:       <tr>
+    15:         <td><%= link_to 'Show', superadmin %></td>
+    16:         <td><%= link_to 'Edit', edit_superadmin_path(superadmin) %></td>
+  
+app/views/superadmins/index.html.erb:13:in `_app_views_superadmins_index_html_erb___917604801_44648760'
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1130.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (191.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSuperadmins (20170918030501)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE TABLE "superadmins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password" varchar)[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170918030501"]]
+  [1m[35m (212.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-09-17 23:06:22.867835"], ["updated_at", "2017-09-17 23:06:22.867835"]]
+  [1m[35m (224.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:08:13 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  Rendered superadmins/index.html.erb within layouts/application (6.5ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10:   </thead>
+    11: 
+    12:   <tbody>
+    13:     <% @superadmins.each do |superadmin| %>
+    14:       <tr>
+    15:         <td><%= link_to 'Show', superadmin %></td>
+    16:         <td><%= link_to 'Edit', edit_superadmin_path(superadmin) %></td>
+  
+app/views/superadmins/index.html.erb:13:in `_app_views_superadmins_index_html_erb___917604801_41241120'
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:08:48 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  Rendered superadmins/index.html.erb within layouts/application (7.0ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    10:   </thead>
+    11: 
+    12:   <tbody>
+    13:     <% @superadmin.each do |superadmin| %>
+    14:       <tr>
+    15:         <td><%= link_to 'Show', superadmin %></td>
+    16:         <td><%= link_to 'Edit', edit_superadmin_path(superadmin) %></td>
+  
+app/views/superadmins/index.html.erb:13:in `_app_views_superadmins_index_html_erb___917604801_76479552'
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:10:02 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  [1m[36mSuperadmin Load (0.0ms)[0m  [1m[34mSELECT "superadmins".* FROM "superadmins"[0m
+  Rendered superadmins/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 1001ms (Views: 985.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/superadmins/new" for 127.0.0.1 at 2017-09-17 23:10:24 -0400
+Processing by SuperadminsController#new as HTML
+  Rendering superadmins/new.html.erb within layouts/application
+  Rendered superadmins/_form.html.erb (8.5ms)
+  Rendered superadmins/new.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 73ms (Views: 60.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/superadmins" for 127.0.0.1 at 2017-09-17 23:10:27 -0400
+Processing by SuperadminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eKPMR2+d0doD2O/KtFYzvaWK3gXUbPCpMnMaa5Y8hW7P5sCTXVY8xS/lVDNjdyARsAV2RcuFn/9HYRe7M+0lLA==", "commit"=>"Create Superadmin"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "superadmins" DEFAULT VALUES[0m
+  [1m[35m (138.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/superadmins/1
+Completed 302 Found in 173ms (ActiveRecord: 141.3ms)
+
+
+Started GET "/superadmins/1" for 127.0.0.1 at 2017-09-17 23:10:27 -0400
+Processing by SuperadminsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSuperadmin Load (0.0ms)[0m  [1m[34mSELECT  "superadmins".* FROM "superadmins" WHERE "superadmins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering superadmins/show.html.erb within layouts/application
+  Rendered superadmins/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 83ms (Views: 62.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:10:29 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  [1m[36mSuperadmin Load (0.0ms)[0m  [1m[34mSELECT "superadmins".* FROM "superadmins"[0m
+  Rendered superadmins/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 58ms (Views: 50.7ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/superadmins/1" for 127.0.0.1 at 2017-09-17 23:10:33 -0400
+Processing by SuperadminsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"JlWWOD0lYAxNnKX4vQD+YPZuPSvx8N6wuqpCDrADwBkgcyJ8xsG8/LXbRN2fmG02TQRwBNYxv5YpvHvPMvFyyA==", "id"=>"1"}
+  [1m[36mSuperadmin Load (0.5ms)[0m  [1m[34mSELECT  "superadmins".* FROM "superadmins" WHERE "superadmins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[31mDELETE FROM "superadmins" WHERE "superadmins"."id" = ?[0m  [["id", 1]]
+  [1m[35m (118.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/superadmins
+Completed 302 Found in 123ms (ActiveRecord: 120.1ms)
+
+
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:10:33 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  [1m[36mSuperadmin Load (0.5ms)[0m  [1m[34mSELECT "superadmins".* FROM "superadmins"[0m
+  Rendered superadmins/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 79ms (Views: 70.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/superadmins/new" for 127.0.0.1 at 2017-09-17 23:10:55 -0400
+Processing by SuperadminsController#new as HTML
+  Rendering superadmins/new.html.erb within layouts/application
+  Rendered superadmins/_form.html.erb (2.0ms)
+  Rendered superadmins/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 97ms (Views: 80.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/superadmins/new" for 127.0.0.1 at 2017-09-17 23:12:59 -0400
+Processing by SuperadminsController#new as HTML
+  Rendering superadmins/new.html.erb within layouts/application
+  Rendered superadmins/_form.html.erb (30.1ms)
+  Rendered superadmins/new.html.erb within layouts/application (35.6ms)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `password_field' for #<Superadmin id: nil, username: nil, password: nil>
+Did you mean?  password):
+    18: 
+    19:     <p>
+    20:       <%= form.label :password_field %><br>
+    21:       <%= form.text_field :password_field %>
+    22:     </p>
+    23: 
+    24: 
+  
+app/views/superadmins/_form.html.erb:21:in `block in _app_views_superadmins__form_html_erb__1021247666_58465224'
+app/views/superadmins/_form.html.erb:1:in `_app_views_superadmins__form_html_erb__1021247666_58465224'
+app/views/superadmins/new.html.erb:3:in `_app_views_superadmins_new_html_erb__178341988_58377648'
+Started GET "/superadmins/new" for 127.0.0.1 at 2017-09-17 23:13:19 -0400
+Processing by SuperadminsController#new as HTML
+  Rendering superadmins/new.html.erb within layouts/application
+  Rendered superadmins/_form.html.erb (2.0ms)
+  Rendered superadmins/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 62ms (Views: 55.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/superadmins/new" for 127.0.0.1 at 2017-09-17 23:21:04 -0400
+Processing by SuperadminsController#new as HTML
+  Rendering superadmins/new.html.erb within layouts/application
+  Rendered superadmins/_form.html.erb (7.5ms)
+  Rendered superadmins/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 69ms (Views: 60.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/superadmins" for 127.0.0.1 at 2017-09-17 23:21:41 -0400
+Processing by SuperadminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hmKvCcLN8SmiLlifAWyJEuIDzHeKbCuK7xwxoUfJU8yARBtNOSkt2Vppuboj9BpEWWmBWK2tSqx8CghgxTvhHQ==", "superadmin"=>{"username"=>"1", "password"=>"[FILTERED]"}, "commit"=>"Create Superadmin"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/superadmins_controller.rb:27:in `create'
+Started GET "/superadmins/new" for 127.0.0.1 at 2017-09-17 23:22:36 -0400
+Processing by SuperadminsController#new as HTML
+  Rendering superadmins/new.html.erb within layouts/application
+  Rendered superadmins/_form.html.erb (4.0ms)
+  Rendered superadmins/new.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 118ms (Views: 88.9ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/superadmins" for 127.0.0.1 at 2017-09-17 23:22:41 -0400
+Processing by SuperadminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1gO6SH4VSvGkuDVCnKsr8RV5wI+X9+mXo68gF5MpjwPQJQ4MhfGWAVz/1Ge+M7inrhONoLA2iLEwuRnWEds90g==", "superadmin"=>{"username"=>"111", "password"=>"[FILTERED]"}, "commit"=>"Create Superadmin"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 1)):
+  
+app/controllers/superadmins_controller.rb:72:in `superadmin_params'
+app/controllers/superadmins_controller.rb:27:in `create'
+Started POST "/superadmins" for 127.0.0.1 at 2017-09-17 23:28:12 -0400
+Processing by SuperadminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1gO6SH4VSvGkuDVCnKsr8RV5wI+X9+mXo68gF5MpjwPQJQ4MhfGWAVz/1Ge+M7inrhONoLA2iLEwuRnWEds90g==", "superadmin"=>{"username"=>"111", "password"=>"[FILTERED]"}, "commit"=>"Create Superadmin"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering superadmins/new.html.erb within layouts/application
+  Rendered superadmins/_form.html.erb (2.5ms)
+  Rendered superadmins/new.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 61ms (Views: 51.1ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/superadmins" for 127.0.0.1 at 2017-09-17 23:28:22 -0400
+Processing by SuperadminsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6f8z8lHMrD1bnT9YcGkGTi74Y4C2DQ92VJKJuaU0Op7v2Ye2qihwzaPa3n1S8ZUYlZIur5HMblDHhLB4J8aITw==", "superadmin"=>{"username"=>"111", "password"=>"[FILTERED]"}, "commit"=>"Create Superadmin"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "superadmins" ("username", "password") VALUES (?, ?)[0m  [["username", "111"], ["password", "111"]]
+  [1m[35m (132.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/superadmins/2
+Completed 302 Found in 138ms (ActiveRecord: 134.0ms)
+
+
+Started GET "/superadmins/2" for 127.0.0.1 at 2017-09-17 23:28:22 -0400
+Processing by SuperadminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSuperadmin Load (0.5ms)[0m  [1m[34mSELECT  "superadmins".* FROM "superadmins" WHERE "superadmins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering superadmins/show.html.erb within layouts/application
+  Rendered superadmins/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 60ms (Views: 48.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:28:24 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  [1m[36mSuperadmin Load (0.0ms)[0m  [1m[34mSELECT "superadmins".* FROM "superadmins"[0m
+  Rendered superadmins/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 56ms (Views: 47.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:31:35 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  [1m[36mSuperadmin Load (0.5ms)[0m  [1m[34mSELECT "superadmins".* FROM "superadmins"[0m
+  Rendered superadmins/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 57ms (Views: 49.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:31:58 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  [1m[36mSuperadmin Load (0.5ms)[0m  [1m[34mSELECT "superadmins".* FROM "superadmins"[0m
+  Rendered superadmins/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 49ms (Views: 42.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/superadmins/2/edit" for 127.0.0.1 at 2017-09-17 23:33:28 -0400
+Processing by SuperadminsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSuperadmin Load (0.0ms)[0m  [1m[34mSELECT  "superadmins".* FROM "superadmins" WHERE "superadmins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering superadmins/edit.html.erb within layouts/application
+  Rendered superadmins/_form.html.erb (2.0ms)
+  Rendered superadmins/edit.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 62ms (Views: 53.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:33:32 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  [1m[36mSuperadmin Load (0.5ms)[0m  [1m[34mSELECT "superadmins".* FROM "superadmins"[0m
+  Rendered superadmins/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 77ms (Views: 65.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/superadmins/2/edit" for 127.0.0.1 at 2017-09-17 23:33:33 -0400
+Processing by SuperadminsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSuperadmin Load (0.5ms)[0m  [1m[34mSELECT  "superadmins".* FROM "superadmins" WHERE "superadmins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering superadmins/edit.html.erb within layouts/application
+  Rendered superadmins/_form.html.erb (3.0ms)
+  Rendered superadmins/edit.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 78ms (Views: 67.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:34:08 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  [1m[36mSuperadmin Load (0.0ms)[0m  [1m[34mSELECT "superadmins".* FROM "superadmins"[0m
+  Rendered superadmins/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 59ms (Views: 52.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/superadmins/2/edit" for 127.0.0.1 at 2017-09-17 23:34:09 -0400
+Processing by SuperadminsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSuperadmin Load (0.5ms)[0m  [1m[34mSELECT  "superadmins".* FROM "superadmins" WHERE "superadmins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering superadmins/edit.html.erb within layouts/application
+  Rendered superadmins/_form.html.erb (2.0ms)
+  Rendered superadmins/edit.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 83ms (Views: 73.7ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/superadmins/2" for 127.0.0.1 at 2017-09-17 23:34:11 -0400
+Processing by SuperadminsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nWXWfludUU3i39NzLaWPrKq51r8HA7Jj6FEizmIpV/x5pf0sSWLmO6TK2gMGFltS84JonkoX3Bgm+lmuinitow==", "superadmin"=>{"username"=>"111", "password"=>"[FILTERED]"}, "commit"=>"Update Superadmin", "id"=>"2"}
+  [1m[36mSuperadmin Load (0.0ms)[0m  [1m[34mSELECT  "superadmins".* FROM "superadmins" WHERE "superadmins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[33mUPDATE "superadmins" SET "password" = ? WHERE "superadmins"."id" = ?[0m  [["password", "1"], ["id", 2]]
+  [1m[35m (194.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/superadmins/2
+Completed 302 Found in 200ms (ActiveRecord: 195.9ms)
+
+
+Started GET "/superadmins/2" for 127.0.0.1 at 2017-09-17 23:34:12 -0400
+Processing by SuperadminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSuperadmin Load (0.0ms)[0m  [1m[34mSELECT  "superadmins".* FROM "superadmins" WHERE "superadmins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering superadmins/show.html.erb within layouts/application
+  Rendered superadmins/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 52ms (Views: 46.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:34:13 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  [1m[36mSuperadmin Load (0.5ms)[0m  [1m[34mSELECT "superadmins".* FROM "superadmins"[0m
+  Rendered superadmins/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 60ms (Views: 54.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/superadmins/2" for 127.0.0.1 at 2017-09-17 23:34:15 -0400
+Processing by SuperadminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSuperadmin Load (0.0ms)[0m  [1m[34mSELECT  "superadmins".* FROM "superadmins" WHERE "superadmins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering superadmins/show.html.erb within layouts/application
+  Rendered superadmins/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 74ms (Views: 66.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:34:17 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  [1m[36mSuperadmin Load (0.0ms)[0m  [1m[34mSELECT "superadmins".* FROM "superadmins"[0m
+  Rendered superadmins/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 61ms (Views: 54.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/superadmins/2" for 127.0.0.1 at 2017-09-17 23:35:18 -0400
+Processing by SuperadminsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSuperadmin Load (0.0ms)[0m  [1m[34mSELECT  "superadmins".* FROM "superadmins" WHERE "superadmins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering superadmins/show.html.erb within layouts/application
+  Rendered superadmins/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 65ms (Views: 55.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/superadmins" for 127.0.0.1 at 2017-09-17 23:35:21 -0400
+Processing by SuperadminsController#index as HTML
+  Rendering superadmins/index.html.erb within layouts/application
+  [1m[36mSuperadmin Load (0.0ms)[0m  [1m[34mSELECT "superadmins".* FROM "superadmins"[0m
+  Rendered superadmins/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 70ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
