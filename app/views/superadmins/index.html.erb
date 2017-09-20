@@ -2,19 +2,20 @@
 
 <h1>Superadmins</h1>
 
-<table>
+<table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th colspan="3">Username</th>
-      <th colspan="3">Password</th>
+      <th>Username</th>
+      <th>password_digest</th>
+      <th colspan="3">operation</th>
     </tr>
   </thead>
 
   <tbody>
     <% @superadmins.each do |superadmin| %>
       <tr>
-        <td colspan="3"><%= superadmin.username %></td>
-        <td colspan="3"><%= superadmin.password %></td>
+        <td><%= superadmin.username %></td>
+        <td><%= superadmin.password_digest %></td>
         <td><%= link_to 'Show', superadmin %></td>
         <td><%= link_to 'Edit', edit_superadmin_path(superadmin) %></td>
         <td><%= link_to 'Destroy', superadmin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
