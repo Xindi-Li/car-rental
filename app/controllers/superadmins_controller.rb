@@ -1,6 +1,6 @@
 class SuperadminsController < ApplicationController
   before_action :set_superadmin, only: [:show, :edit, :update, :destroy]
-  before_action :is_login?
+  before_action :has_authority?
 
   # GET /superadmins
   # GET /superadmins.json
@@ -70,7 +70,7 @@ class SuperadminsController < ApplicationController
     @superadmin = User.find(params[:id])
   end
 
-  def is_login?
+  def has_authority?
     auth = login_authority
     if !auth || auth != 'super'
       redirect_to login_path

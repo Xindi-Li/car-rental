@@ -8,7 +8,7 @@
       <tr>
         <th>email</th>
         <th>name</th>
-        <th colspan="2">operation</th>
+        <th colspan="3">operation</th>
       </tr>
       </thead>
 
@@ -18,6 +18,10 @@
             <td><%= customer.email %></td>
             <td><%= customer.name %></td>
             <td><%= link_to 'show', customer_path(customer) %></td>
+            <% if login_authority.eql? 'super' or login_authority.eql? 'admin' %>
+                <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+                <td><%= link_to 'Destroy', customer_path(customer), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+            <% end %>
           </tr>
       <% end %>
       </tbody>

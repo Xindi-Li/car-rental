@@ -6,7 +6,7 @@
         <%= link_to 'Customer Sign Up', signup_path, class: "btn btn-default btn-lg", id: "welcome" %>
     <% else %>
         <% if login_authority.eql? 'super' %>
-            <%= link_to 'Manage superadmins', superadmins_path, class: "btn btn-primary btn-lg", id: "welcome" %>
+            <%= link_to 'Manage superadmins', superadmins_path, class: "btn btn-default btn-lg", id: "welcome" %>
             <%= link_to 'Manage admins', admins_path, class: "btn btn-default btn-lg", id: "welcome" %>
             <%= link_to 'Manage customers', customers_path, class: "btn btn-default btn-lg", id: "welcome" %>
             <%= link_to 'Manage cars', cars_path, class: "btn btn-default btn-lg", id: "welcome" %>
@@ -15,6 +15,12 @@
             <%= link_to 'Manage admins', admins_path, class: "btn btn-default btn-lg", id: "welcome" %>
             <%= link_to 'Manage customers', customers_path, class: "btn btn-default btn-lg", id: "welcome" %>
             <%= link_to 'Manage cars', cars_path, class: "btn btn-default btn-lg", id: "welcome" %>
+        <% end %>
+        <% if login_authority.eql? 'customer' %>
+            <%= link_to 'view cars', login_path, class: "btn btn-default btn-lg", id: "welcome" %>
+            <%= link_to 'search cars', login_path, class: "btn btn-default btn-lg", id: "welcome" %>
+            <%= link_to 'return cars', login_path, class: "btn btn-default btn-lg", id: "welcome" %>
+            <%= link_to 'view checkout history', login_path, class: "btn btn-default btn-lg", id: "welcome" %>
         <% end %>
     <% end %>
   </div>

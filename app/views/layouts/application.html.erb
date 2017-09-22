@@ -24,10 +24,10 @@
                     <li><%= link_to "Profile", superadmin_path(current_user) %></li>
                 <% end %>
                 <% if current_user.authority.eql? 'admin' %>
-                    <li><%= link_to "Profile", superadmin_path(current_user) %></li>
+                    <li><%= link_to "Profile", admin_path(current_user) %></li>
                 <% end %>
                 <% if current_user.authority.eql? 'customer' %>
-                    <li><%= link_to "Profile", superadmin_path(current_user) %></li>
+                    <li><%= link_to "Profile", customer_path(current_user) %></li>
                 <% end %>
                 <li class="divider"></li>
                 <li>

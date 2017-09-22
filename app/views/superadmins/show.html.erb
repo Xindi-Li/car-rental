@@ -9,6 +9,7 @@
   <strong>Name:</strong>
   <%= @superadmin.name %>
 </p>
+
 <% if @superadmin.email.eql? current_user.email %>
     <%= link_to 'Edit', edit_superadmin_path(@superadmin) %> |
 <% end %>
