@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Username:</strong>
-  <%= @superadmin.username %>
+  <strong>Email:</strong>
+  <%= @superadmin.email %>
 </p>
 
 <p>
-  <strong>Password:</strong>
-  <%= @superadmin.password %>
+  <strong>Name:</strong>
+  <%= @superadmin.name %>
 </p>
-
-<%= link_to 'Edit', edit_superadmin_path(@superadmin) %> |
+<% if @superadmin.email.eql? current_user.email %>
+    <%= link_to 'Edit', edit_superadmin_path(@superadmin) %> |
+<% end %>
 <%= link_to 'Back', superadmins_path %>

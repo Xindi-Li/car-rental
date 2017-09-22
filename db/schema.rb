@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920142831) do
+ActiveRecord::Schema.define(version: 20170921215434) do
 
-  create_table "superadmins", force: :cascade do |t|
-    t.string "username"
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
     t.string "password_digest"
+    t.decimal "rental_charge"
+    t.string "authority"
   end
 
 end

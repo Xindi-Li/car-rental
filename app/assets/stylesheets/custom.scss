@@ -61,3 +61,16 @@ p {
   color: #fff;
   text-decoration: none;
 }
+
+input, textarea, select {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.btn{
+  margin-bottom: 15px;
+}
+#welcome{
+  margin-left: 20px;
+}

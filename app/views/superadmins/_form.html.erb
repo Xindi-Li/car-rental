@@ -1,28 +1,26 @@
-<%= form_for @superadmin do |form| %>
-    <% if superadmin.errors.any? %>
+<%= form_for(:superadmin, url: superadmins_path) do |f| %>
+    <% if @superadmin.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(superadmin.errors.count, "error") %> prohibited this superadmin from being saved:</h2>
-
+          <h2 class="text-left"><%= pluralize(@superadmin.errors.count, "error") %> prohibited this superadmin from
+            being saved:</h2>
           <ul>
-            <% superadmin.errors.full_messages.each do |message| %>
+            <% @superadmin.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
             <% end %>
           </ul>
         </div>
     <% end %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-    <p>
-      <%= form.label :username %><br>
-      <%= form.text_field :username %>
-    </p>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
 
-    <p>
-      <%= form.label :password %><br>
-      <%= password_field(:superadmin, :password, size: 20) %>
-    </p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
 
+    <%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.password_field :password_confirmation %>
 
-    <div class="actions">
-      <%= form.submit %>
-    </div>
+    <%= f.submit "Create", class: "btn btn-primary" %>
 <% end %>
