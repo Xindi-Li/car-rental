@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :has_authority?,except: [:new,:show]
+  before_action :has_authority?, except: [:new, :show, :create, :edit]
 
   # GET /customers
   # GET /customers.json
@@ -29,7 +29,10 @@ class CustomersController < ApplicationController
     @customer.authority = 'customer'
     respond_to do |format|
       if @customer.save
-        format.html {redirect_to customers_path, notice: 'Customer was successfully created.'}
+        if !current_user
+          log_in @customer, :customer
+        end
+        format.html {redirect_to customer_path(@customer), notice: 'Customer was successfully created.'}
         format.json {render :show, status: :created, location: @customer}
       else
         format.html {render :new}
@@ -43,7 +46,7 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html {redirect_to @customer, notice: 'Customer was successfully updated.'}
+        format.html {redirect_to customer_path(@customer), notice: 'Customer was successfully updated.'}
         format.json {render :show, status: :ok, location: @customer}
       else
         format.html {render :edit}
@@ -71,7 +74,7 @@ class CustomersController < ApplicationController
   def has_authority?
     auth = login_authority
     if !auth || auth == 'customer'
-      redirect_to login_path
+      redirect_to login_path, notice: 'You are not authorized to do that !!!'
     end
   end
 

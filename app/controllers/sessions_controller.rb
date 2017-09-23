@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
       if user.authority.eql? 'super'
         log_in user, :super
         redirect_to root_path
-      elsif user.authority.eql? 'user'
-        log_in user, :user
+      elsif user.authority.eql? 'admin'
+        log_in user, :admin
         redirect_to root_path
       elsif user.authority.eql? 'customer'
         log_in user, :customer

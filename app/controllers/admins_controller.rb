@@ -1,10 +1,11 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
+  before_action :has_authority?
 
   # GET /admins
   # GET /admins.json
   def index
-    @admins = User.all
+    @admins = User.where(:authority => 'admin')
   end
 
   # GET /admins/1
@@ -28,7 +29,7 @@ class AdminsController < ApplicationController
     @admin.authority = 'admin'
     respond_to do |format|
       if @admin.save
-        format.html {redirect_to @admin, notice: 'Admin was successfully created.'}
+        format.html {redirect_to admin_path(@admin), notice: 'Admin was successfully created.'}
         format.json {render :show, status: :created, location: @admin}
       else
         format.html {render :new}
@@ -42,7 +43,7 @@ class AdminsController < ApplicationController
   def update
     respond_to do |format|
       if @admin.update(admin_params)
-        format.html {redirect_to @admin, notice: 'Admin was successfully updated.'}
+        format.html {redirect_to admin_path(@admin), notice: 'Admin was successfully updated.'}
         format.json {render :show, status: :ok, location: @admin}
       else
         format.html {render :edit}
@@ -65,6 +66,13 @@ class AdminsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_admin
     @admin = User.find(params[:id])
+  end
+
+  def has_authority?
+    auth = login_authority
+    if !auth || auth == 'customer'
+      redirect_to login_path, notice: 'You are not authorized to do that !!!'
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

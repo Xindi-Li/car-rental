@@ -1,6 +1,34 @@
 <h1>Editing Admin</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:admin, url: admin_path, method: :patch) do |f| %>
+        <% if @admin.errors.any? %>
+            <div id="error_explanation">
+              <h2 class="text-left"><%= pluralize(@admin.errors.count, "error") %> prohibited this superadmin from
+                being saved:</h2>
+              <ul>
+                <% @admin.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'Name' %>
 
-<%= render 'form', admin: @admin %>
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control', placeholder: 'Email address' %>
 
-<%= link_to 'Show', @admin %> |
-<%= link_to 'Back', admins_path %>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Password Confirmation' %>
+
+        <%= f.submit "Create", class: "btn btn-primary btn-block" %>
+    <% end %>
+
+    <%= link_to 'Show', admin_path(@admin) %> |
+    <%= link_to 'Back', admins_path %>
+  </div>
+</div>
