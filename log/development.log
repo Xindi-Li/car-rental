@@ -12118,3 +12118,33 @@ Processing by WelcomeController#index as HTML
 Completed 200 OK in 111ms (Views: 104.0ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-09-23 19:21:54 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (10862.6ms)
+Completed 200 OK in 11654ms (Views: 11168.1ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-09-23 19:22:10 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (91.8ms)
+Completed 200 OK in 244ms (Views: 213.1ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-09-23 19:22:14 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y+E70q42U9U57pbpUpx9CgQ7kzruCDgOj0Fh7+WFrqGxm/jlnquGhTfUo0p2lPm1Tud/gquH71PU97/ZPJlD/Q==", "session"=>{"email"=>"123@123", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (7.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "123@123"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 653ms (ActiveRecord: 38.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-23 19:22:14 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 181ms (Views: 179.7ms | ActiveRecord: 0.2ms)
+
+
