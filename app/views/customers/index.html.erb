@@ -17,10 +17,10 @@
           <tr>
             <td><%= customer.email %></td>
             <td><%= customer.name %></td>
-            <td><%= link_to 'view', customer_path(customer) %></td>
+            <td><%= link_to 'View', customer_path(customer) %></td>
             <% if login_authority.eql? 'super' or login_authority.eql? 'admin' %>
-                <td><%= link_to 'edit', edit_customer_path(customer) %></td>
-                <td><%= link_to 'delete', customer_path(customer), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+                <td><%= link_to 'Delete', customer_path(customer), method: :delete, data: {confirm: 'Are you sure?'} %></td>
             <% end %>
           </tr>
       <% end %>
