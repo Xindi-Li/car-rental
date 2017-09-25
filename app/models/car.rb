@@ -1,5 +1,5 @@
 class Car < ApplicationRecord
-	has_many :reservations
+	# has_many :reservations
 	mount_uploader :img_attach, CarImageUploader
 	validates :lpn, :manufactuere, :model, :hrr, :style, :location, presence: true
 	validates :lpn, uniqueness: true

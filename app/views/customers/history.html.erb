@@ -19,6 +19,7 @@
 
       <tbody>
       <% @reservations.each do |reservation| %>
+        <% if reservation.status == "Returned"%>
           <tr>
             <td><%= reservation.lpn %></td>
             <td><%= reservation.email %></td>
@@ -27,6 +28,7 @@
             <td><%= reservation.charge %></td>
             <td><%= reservation.status %></td>
           </tr>
+        <% end %>
       <% end %>
       </tbody>
     </table>

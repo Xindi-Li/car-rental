@@ -9,7 +9,8 @@ class CarsController < ApplicationController
 
   def new_reserve
     # @car = 
-    @reservation = Reservation.new
+    lpn = params[:lpn]
+    @reservation = Reservation.new(:lpn => lpn)
   end
 
   def create_reserve
@@ -18,10 +19,11 @@ class CarsController < ApplicationController
     current_time = Time.now
 
     @reservation = Reservation.create(reservation_params)
-    @car = Car.find_by_lpn(@reservation.lpn)
+    
 
     respond_to do |format|
       if @reservation.save
+        @car = Car.find_by_lpn(@reservation.lpn)
         if @car.status == "Available"
           @car.status = "Reserved"
           @car.update_attributes(:status => "Reserved")
@@ -110,7 +112,7 @@ class CarsController < ApplicationController
 
   def checkout
     lpn = params[:reservation][:lpn]
-    @reservation = Reservation.find_by_lpn(lpn)
+    @reservation = Reservation.where(:lpn => lpn).where(:status => "Reserved").first
     current_time = Time.now
     @reservation.update_attributes(:checkout_time => current_time)
     @reservation.update_attributes(:status => "Checkout")
@@ -122,18 +124,18 @@ class CarsController < ApplicationController
 
   def return_car
     lpn = params[:reservation][:lpn]
-    @reservation = Reservation.find_by_lpn(lpn)
+    @reservation = Reservation.where(:lpn => lpn).where(:status => "Checkout").first
     current_time = Time.now
     @reservation.update_attributes(:return_time => current_time)
     @reservation.update_attributes(:status => "Returned")
 
     @car = Car.find_by_lpn(lpn)
-    if @car.status == "Checkout"
-      @car.update_attributes(:status => "Available")
-      respond_to do |format|
-        format.html { redirect_to @car, notice: 'Car was successfully returned.' }
-      end
+    # if @car.status == "Checkout"
+    @car.update_attributes(:status => "Available")
+    respond_to do |format|
+      format.html { redirect_to @car, notice: 'Car was successfully returned.' }
     end
+    # end
 
 
   end
