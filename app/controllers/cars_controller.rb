@@ -94,8 +94,8 @@ class CarsController < ApplicationController
   def destroy
     @car.destroy
     respond_to do |format|
-      format.html { redirect_to cars_url, notice: 'Car was successfully destroyed.' }
-      format.json { head :no_content }
+       format.html { redirect_to cars_url, notice: 'Car was successfully destroyed.' }
+       format.json { head :no_content }
     end
   end
 

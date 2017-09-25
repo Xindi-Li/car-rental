@@ -17,10 +17,9 @@
             <%= link_to 'Manage cars', cars_path, class: "btn btn-default btn-lg", id: "welcome" %>
         <% end %>
         <% if login_authority.eql? 'customer' %>
-            <%= link_to 'view cars', cars_path, class: "btn btn-default btn-lg", id: "welcome" %>
-            <%= link_to 'search cars', login_path, class: "btn btn-default btn-lg", id: "welcome" %>
-            <%= link_to 'return cars', login_path, class: "btn btn-default btn-lg", id: "welcome" %>
-            <%= link_to 'view checkout history', login_path, class: "btn btn-default btn-lg", id: "welcome" %>
+            <%= link_to 'View cars', cars_path, class: "btn btn-default btn-lg", id: "welcome" %>
+            <%= link_to 'Search cars', root_path, class: "btn btn-default btn-lg", id: "welcome" %>
+            <%= link_to 'View checkout history', login_path, class: "btn btn-default btn-lg", id: "welcome" %>
         <% end %>
     <% end %>
   </div>
