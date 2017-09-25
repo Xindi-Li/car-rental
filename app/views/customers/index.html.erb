@@ -17,10 +17,10 @@
           <tr>
             <td><%= customer.email %></td>
             <td><%= customer.name %></td>
-            <td><%= link_to 'show', customer_path(customer) %></td>
+            <td><%= link_to 'view', customer_path(customer) %></td>
             <% if login_authority.eql? 'super' or login_authority.eql? 'admin' %>
-                <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-                <td><%= link_to 'Destroy', customer_path(customer), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                <td><%= link_to 'edit', edit_customer_path(customer) %></td>
+                <td><%= link_to 'delete', customer_path(customer), method: :delete, data: {confirm: 'Are you sure?'} %></td>
             <% end %>
           </tr>
       <% end %>
@@ -29,6 +29,6 @@
 
     <br>
 
-    <%= link_to 'New Customer', new_customer_path %>
+    <%= link_to 'New Customer', new_customer_path, class: "btn btn-primary" %>
   </div>
 </div>

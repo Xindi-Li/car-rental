@@ -31,7 +31,7 @@ class SuperadminsController < ApplicationController
     @superadmin.authority = 'super'
     respond_to do |format|
       if @superadmin.save
-        format.html {redirect_to superadmins_url, notice: 'Superadmin was successfully created.'}
+        format.html {redirect_to superadmin_path(@superadmin), notice: 'Superadmin was successfully created.'}
         format.json {render :show, status: :created, location: @superadmin}
       else
         format.html {render :new}
@@ -45,7 +45,7 @@ class SuperadminsController < ApplicationController
   def update
     respond_to do |format|
       if @superadmin.update(superadmin_params)
-        format.html {redirect_to @superadmin, notice: 'Superadmin was successfully updated.'}
+        format.html {redirect_to superadmin_path(@superadmin), notice: 'Superadmin was successfully updated.'}
         format.json {render :show, status: :ok, location: @superadmin}
       else
         format.html {render :edit}
@@ -73,7 +73,7 @@ class SuperadminsController < ApplicationController
   def has_authority?
     auth = login_authority
     if !auth || auth != 'super'
-      redirect_to login_path
+      redirect_to login_path, notice: 'You are not authorized to do that !!!'
     end
   end
 

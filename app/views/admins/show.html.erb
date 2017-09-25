@@ -1,4 +1,14 @@
-<p id="notice"><%= notice %></p>
+<h2 id="notice"><%= notice %></h2>
+
+<p>
+  <strong>Email:</strong>
+  <%= @admin.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @admin.name %>
+</p>
 
 <%= link_to 'Edit', edit_admin_path(@admin) %> |
 <%= link_to 'Back', admins_path %>
