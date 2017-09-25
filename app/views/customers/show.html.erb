@@ -9,16 +9,12 @@
   <%= @customer.name %>
 </p>
 
-<<<<<<< HEAD
 <%= link_to 'Current Reservation', customer_reservation_path(:customer => {:email => @customer.email}) %>
 <%= link_to 'Reservation History', customer_history_path(:customer => {:email => @customer.email}) %>
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
-=======
 <%= link_to 'Edit', edit_customer_path(@customer) %>
 <% if login_authority == 'customer' %>
     <%= link_to 'Back', root_path %>
 <% else %>
     <%= link_to 'Back', customers_path %>
 <% end %>
->>>>>>> aed09a94719b8e97cb47522d141385d07c335326
+
