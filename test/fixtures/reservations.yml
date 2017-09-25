@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  lpn: MyString
+  expect_start_time: 2017-09-23 10:44:20
+  checkout_time: 2017-09-23 10:44:20
+  expect_return_time: 2017-09-23 10:44:20
+  return_time: 2017-09-23 10:44:20
+  status: MyString
+  charge: 9.99
+
+two:
+  email: MyString
+  lpn: MyString
+  expect_start_time: 2017-09-23 10:44:20
+  checkout_time: 2017-09-23 10:44:20
+  expect_return_time: 2017-09-23 10:44:20
+  return_time: 2017-09-23 10:44:20
+  status: MyString
+  charge: 9.99

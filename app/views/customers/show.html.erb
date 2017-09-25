@@ -9,5 +9,7 @@
   <%= @customer.name %>
 </p>
 
+<%= link_to 'Current Reservation', customer_reservation_path(:customer => {:email => @customer.email}) %>
+<%= link_to 'Reservation History', customer_history_path(:customer => {:email => @customer.email}) %>
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>

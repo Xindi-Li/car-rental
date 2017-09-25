@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<h1>Current Reservation</h1>
+
+
+<table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>Status</th>
+        <th>Lisence-Plate Number</th>
+        <!-- <th colspan="2">operation</th> -->
+        <th>Checkout Time</th>
+        <th>Operation</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @reservations.each do |r| %>
+          <tr>
+            <td><%= r.status %></td>
+            <td><%= r.lpn %></td>
+            <td><%= r.expect_start_time%></td>
+            <td><%= link_to 'Checkout', checkout_path(:reservation => {:lpn => r.lpn}) %><td>
+            <td><%= link_to 'Return', returncar_path(:reservation => {:lpn => r.lpn})%></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>

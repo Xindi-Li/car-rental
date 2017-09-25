@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+	<strong>Lisence-Plate Number</strong>
+	<%= @reservation.lpn %>
+</p>
+
+<p>
+	<strong>Email</strong>
+	<%= @reservation.email %>
+</p>
+
+<p>
+	<strong>Checkout Time</strong>
+	<%= @reservation.expect_start_time %>
+</p>
+
+<p>
+	<strong>Return Time</strong>
+	<%= @reservation.expect_return_time %>
+</p>
+
+<%= link_to 'Back', cars_path %>

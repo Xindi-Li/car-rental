@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lpn: MyString
+  manufactuere: MyString
+  model: MyString
+  hrr: 9.99
+  style: MyString
+  location: MyString
+  status: MyString
+
+two:
+  lpn: MyString
+  manufactuere: MyString
+  model: MyString
+  hrr: 9.99
+  style: MyString
+  location: MyString
+  status: MyString

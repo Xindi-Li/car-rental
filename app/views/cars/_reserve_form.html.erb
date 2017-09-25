@@ -1,0 +1,20 @@
+<%= form_for :reservation do |f| %>
+  <%= f.label :email %>
+  <% if current_user %>
+    <%= f.hidden_field :email, :value => current_user.email %>
+  <% else %>
+    <%= f.email_field :email %>
+  <% end %>
+
+  <%= f.label :lpn %>
+  <%= f.text_field :lpn %>
+
+  <%= f.label :expect_start_time %>
+  <%= f.datetime_field :expect_start_time %>
+
+  <%= f.label :expect_return_time %>
+  <%= f.datetime_field :expect_return_time %>
+
+  <%= f.submit "Reserve", class: "tn btn-primary"%>
+
+<% end %>

@@ -2,20 +2,54 @@
 
 <h1>Cars</h1>
 
-<table>
+
+<table class="table table-striped table-bordered">
   <thead>
     <tr>
+      <th>License-plate Number</th>
+      <th>Manufactuere</th>
+      <th>Model</th>
+      <th>Hourly Rental Rate</th>
+      <th>Style</th>
+      <th>Location</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @cars.each do |car| %>
-      <tr>
-        <td><%= link_to 'Show', car %></td>
-        <td><%= link_to 'Edit', edit_car_path(car) %></td>
-        <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if login_authority.eql? 'customer'%>
+        <% if car.status.eql? 'Available' %>
+          <tr>
+            <td><%= car.lpn %></td>
+            <td><%= car.manufactuere %></td>
+            <td><%= car.model %></td>
+            <td><%= car.hrr %></td>
+            <td><%= car.style %></td>
+            <td><%= car.location %></td>
+            <td><%= car.status %></td>>
+            <td><%= link_to 'Show', car %></td>
+            <td><%= link_to 'Reserve', reserve_path %></td>
+            <!-- <td><%= link_to 'Edit', edit_car_path(car) %></td>
+            <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+          </tr>
+        <% end %>
+        <% else %>
+          <tr>
+            <td><%= car.lpn %></td>
+            <td><%= car.manufactuere %></td>
+            <td><%= car.model %></td>
+            <td><%= car.hrr %></td>
+            <td><%= car.style %></td>
+            <td><%= car.location %></td>
+            <td><%= car.status %></td>>
+            <td><%= link_to 'Show', car %></td>
+            <td><%= link_to 'Edit', edit_car_path(car) %></td>
+            <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+
     <% end %>
   </tbody>
 </table>

@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921215434) do
+ActiveRecord::Schema.define(version: 20170923144420) do
+
+  create_table "cars", force: :cascade do |t|
+    t.string "lpn"
+    t.string "manufactuere"
+    t.string "model"
+    t.decimal "hrr"
+    t.string "style"
+    t.string "location"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "img_attach"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.string "email"
+    t.string "lpn"
+    t.datetime "expect_start_time"
+    t.datetime "checkout_time"
+    t.datetime "expect_return_time"
+    t.datetime "return_time"
+    t.string "status"
+    t.decimal "charge"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"

@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :has_authority?,except: [:new,:show]
+  before_action :has_authority?,except: [:new,:show, :history, :reservation]
 
   # GET /customers
   # GET /customers.json
@@ -60,6 +60,17 @@ class CustomersController < ApplicationController
       format.html {redirect_to customers_url, notice: 'Customer was successfully destroyed.'}
       format.json {head :no_content}
     end
+  end
+
+
+  def reservation
+    email = params[:customer][:email]
+    @reservations = Reservation.where(email: email)
+  end
+
+  def history
+    email = params[:customer][:email]
+    @reservations = Reservation.where(email: email)
   end
 
   private

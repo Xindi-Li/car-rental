@@ -1,4 +1,44 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+	<strong>License-place Number</strong>
+	<%= @car.lpn %>
+</p>
+
+<p>
+	<strong>Manufactuere</strong>
+	<%= @car.manufactuere %>
+</p>
+
+<p>
+	<strong>Model</strong>
+	<%= @car.model %>
+</p>
+
+<p>
+	<strong>Hourly Rental Rate</strong>
+	<%= @car.hrr%>
+</p>
+
+<p>
+	<strong>Style</strong>
+	<%= @car.location %>
+</p>
+
+<p>
+	<strong>Location</strong>
+	<%= @car.location %>
+</p>
+
+<p>
+	<strong>Status</strong>
+	<%= @car.status %>
+</p>
+
+<strong>Image</strong>
+<%= image_tag @car.img_attach.url if @car.img_attach? %>
+<p></p>
+
+<%= link_to 'Checkout History', carhistory_path(:car => {:carlpn => @car.lpn}) %>
 <%= link_to 'Edit', edit_car_path(@car) %> |
 <%= link_to 'Back', cars_path %>
