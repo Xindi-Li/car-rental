@@ -20887,3 +20887,52 @@ Processing by CarsController#index as HTML
 Completed 200 OK in 65ms (Views: 63.1ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-09-25 16:54:17 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (20.8ms)
+Completed 200 OK in 167ms (Views: 165.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-09-25 16:54:19 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 63ms (Views: 60.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-09-25 16:54:24 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lT0cpKwHoj0agTT93VTiXEUbIIj6kV48ayaP2/cenn/K/MES7htNspntEUsLcuzPuRYN0mx9ey4ipu09EV9U6Q==", "session"=>{"email"=>"qwe@qwe", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qwe@qwe"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 75ms (Views: 73.2ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-09-25 16:54:29 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"caF7aE2PH1KXhAxU6WIgBfLk6wd4dHxsgy2hp6E1GqYjmtNGc3UmVdypRrhB0ruQ+gnV3cbO2ymmNoqrMDkWFg==", "session"=>{"email"=>"abc@abc", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "abc@abc"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 96ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-09-25 16:54:29 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 73ms (Views: 67.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/customer_history?customer%5Bemail%5D=abc%40abc" for 127.0.0.1 at 2017-09-25 16:54:31 -0400
+Processing by CustomersController#history as HTML
+  Parameters: {"customer"=>{"email"=>"abc@abc"}}
+  Rendering customers/history.html.erb within layouts/application
+  [1m[36mReservation Load (0.6ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ?[0m  [["email", "abc@abc"]]
+  Rendered customers/history.html.erb within layouts/application (46.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+Completed 200 OK in 133ms (Views: 75.1ms | ActiveRecord: 17.0ms)
+
+
