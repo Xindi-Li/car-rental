@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="721bf655-ebc6-4853-be05-edc75b212146" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/6f9d2b51-fd00-4f1d-891e-274eb4e21ca7/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/6f9d2b51-fd00-4f1d-891e-274eb4e21ca7/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/6f9d2b51-fd00-4f1d-891e-274eb4e21ca7/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/6f9d2b51-fd00-4f1d-891e-274eb4e21ca7/_metadata_/metadata.values.at" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/development.sqlite3" afterPath="$PROJECT_DIR$/db/development.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/61/61DYE6KWkT0kZHOqhoDyZVE-tFnswqDzUluEf04Z9qI.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/61/61DYE6KWkT0kZHOqhoDyZVE-tFnswqDzUluEf04Z9qI.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/8t/8ty2PhDLJZdlpdzwlMLDP3Z98byzcOhKiIUr9wxjKC8.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/8t/8ty2PhDLJZdlpdzwlMLDP3Z98byzcOhKiIUr9wxjKC8.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/99/99m8UCKl4j8IpsVOK8ltLHyNh8Ae0nHw3GBkC34V_co.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/99/99m8UCKl4j8IpsVOK8ltLHyNh8Ae0nHw3GBkC34V_co.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/Gr/GrEXffM4vlgNrtutiTspE4SPDyRu5RUCIvldKDmpY7o.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/Gr/GrEXffM4vlgNrtutiTspE4SPDyRu5RUCIvldKDmpY7o.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/HC/HCDOUd7-S45aJ_PjVAC_Vmjyud3i1aQv4cE3t9_Z3Dw.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/HC/HCDOUd7-S45aJ_PjVAC_Vmjyud3i1aQv4cE3t9_Z3Dw.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/IW/IW5sBTOQrAu1TzXEdBpXsJmN9fAJLU5T9Lz06DVCvXM.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/IW/IW5sBTOQrAu1TzXEdBpXsJmN9fAJLU5T9Lz06DVCvXM.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/Yw/Ywy29jMLnME7UOlAzI_7HM_FrN8DoIW4ogdjHPrbxI4.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/Yw/Ywy29jMLnME7UOlAzI_7HM_FrN8DoIW4ogdjHPrbxI4.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/am/amg8Ec2jsd-LlP0jlpuC_DlFzzmzCT5RB5RG4Wk7ZJI.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/am/amg8Ec2jsd-LlP0jlpuC_DlFzzmzCT5RB5RG4Wk7ZJI.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/gR/gRLuFnjPyXg9y889_UksKbLjH2dUV1B3BoVW3tMSUsU.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/gR/gRLuFnjPyXg9y889_UksKbLjH2dUV1B3BoVW3tMSUsU.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/mo/mo_w0tdLa6intTNzyqxQf2SiPtN8Chp8UYop39QFn-o.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/mo/mo_w0tdLa6intTNzyqxQf2SiPtN8Chp8UYop39QFn-o.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/ui/uiIdoQXU1UcUBDD-pnkjJmsktf-JrkkAreCgP9ujAW8.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/ui/uiIdoQXU1UcUBDD-pnkjJmsktf-JrkkAreCgP9ujAW8.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/vF/vFo_vQH6Y-oVWiVWC4G3Y4sJmBFMImH4YfmhyTbEcPw.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/vF/vFo_vQH6Y-oVWiVWC4G3Y4sJmBFMImH4YfmhyTbEcPw.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/vY/vY1VMpTvxEhzefsDzYRrD2IaRqpzoHIngqg1M4DhX7Q.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/vY/vY1VMpTvxEhzefsDzYRrD2IaRqpzoHIngqg1M4DhX7Q.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/car-rental.iml" afterPath="$PROJECT_DIR$/.idea/car-rental.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/6f9d2b51-fd00-4f1d-891e-274eb4e21ca7.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/6f9d2b51-fd00-4f1d-891e-274eb4e21ca7.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/cars_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/cars_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/development.log" afterPath="$PROJECT_DIR$/log/development.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/pids/server.pid" afterPath="$PROJECT_DIR$/tmp/pids/server.pid" />
-    </list>
+    <list default="true" id="721bf655-ebc6-4853-be05-edc75b212146" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/public/system/" />
@@ -593,12 +568,12 @@
       <workItem from="1506193598421" duration="2939000" />
       <workItem from="1506209003108" duration="1689000" />
       <workItem from="1506352523607" duration="268000" />
-      <workItem from="1506365992071" duration="946000" />
+      <workItem from="1506365992071" duration="1131000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87206000" />
+    <option name="totallyTimeSpent" value="87391000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="261" y="197" width="1857" height="1092" extended-state="6" />
