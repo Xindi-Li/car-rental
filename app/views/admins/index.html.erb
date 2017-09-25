@@ -22,7 +22,7 @@
 
             <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
             <% if login_authority=='super' or login_authority=='admin' and current_user.email != admin.email %>
-                <td><%= link_to 'Delete', customer_path(admin), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                <td><%= link_to 'Delete', admin_path(admin), method: :delete, data: {confirm: 'Are you sure?'} %></td>
             <% else %>
                 <td></td>
             <% end %>
