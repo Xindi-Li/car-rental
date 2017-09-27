@@ -1,31 +1,8 @@
+<% provide(:url, superadmins_path) %>
+<% provide(:method, :post) %>
 <h1>New Superadmin</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:superadmin, url: superadmins_path) do |f| %>
-        <% if @superadmin.errors.any? %>
-            <div id="error_explanation">
-              <h2 class="text-left"><%= pluralize(@superadmin.errors.count, "error") %> prohibited this superadmin from
-                being saved:</h2>
-              <ul>
-                <% @superadmin.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
-        <% end %>
-        <%= f.label :name %>
-        <%= f.text_field :name,class: 'form-control', placeholder: 'Name' %>
-
-        <%= f.label :email %>
-        <%= f.email_field :email,class: 'form-control', placeholder: 'Email address' %>
-
-        <%= f.label :password %>
-        <%= f.password_field :password,class: 'form-control', placeholder: 'Password' %>
-
-        <%= f.label :password_confirmation, "Confirmation" %>
-        <%= f.password_field :password_confirmation,class: 'form-control', placeholder: 'Password Confirmation' %>
-
-        <%= f.submit "Create", class: "btn btn-primary btn-block" %>
-    <% end %>
+    <%= render 'form'%>
   </div>
 </div>
