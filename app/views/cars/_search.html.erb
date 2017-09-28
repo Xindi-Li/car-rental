@@ -1,0 +1,32 @@
+<%= form_for(:car, method: :get, :html => {class: 'form-inline'}) do |f| %>
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.label :lpn %>
+        <%= f.text_field :lpn, placeholder: 'lpn' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :manufactuere %>
+        <%= f.text_field :manufactuere, placeholder: 'manufactuere' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :model %>
+        <%= f.text_field :model, placeholder: 'model' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <%= f.label :hrr %>
+        <%= f.text_field :hrr, placeholder: 'hrr' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :style %>
+        <%= f.text_field :style, placeholder: 'style' %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :location %>
+        <%= f.text_field :location, placeholder: 'location' %>
+      </div>
+    </div>
+
+    <%= f.submit "Search", class: "btn btn-primary" %>
+<% end %>

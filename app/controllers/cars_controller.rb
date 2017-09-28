@@ -4,11 +4,20 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
-    @cars = Car.all
+    if params[:car].nil?
+      return @cars = Car.all
+    end
+    param = car_params.to_h.delete_if {|key, value| value==""}
+    if param.size==0
+      @cars = Car.all
+    else
+      @cars = Car.where(param)
+    end
   end
 
+
   def new_reserve
-    # @car = 
+    # @car =
     lpn = params[:lpn]
     @reservation = Reservation.new(:lpn => lpn)
   end
@@ -19,7 +28,7 @@ class CarsController < ApplicationController
     current_time = Time.now
 
     @reservation = Reservation.create(reservation_params)
-    
+
 
     respond_to do |format|
       if @reservation.save
@@ -29,10 +38,10 @@ class CarsController < ApplicationController
           @car.update_attributes(:status => "Reserved")
         end
         @reservation.update_attributes(:status => "Reserved")
-        format.html { redirect_to @car, notice: 'Reservation was successfully made.' }
-      #   format.json { render :show_reserve, status: :reserved, location: @reservation }
+        format.html {redirect_to @car, notice: 'Reservation was successfully made.'}
+        #   format.json { render :show_reserve, status: :reserved, location: @reservation }
       else
-        format.html { render :new_reserve }
+        format.html {render :new_reserve}
       end
     end
   end
@@ -66,11 +75,11 @@ class CarsController < ApplicationController
 
     respond_to do |format|
       if @car.save
-        format.html { redirect_to @car, notice: 'Car was successfully created.' }
-        format.json { render :show, status: :created, location: @car }
+        format.html {redirect_to @car, notice: 'Car was successfully created.'}
+        format.json {render :show, status: :created, location: @car}
       else
-        format.html { render :new }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @car.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -80,11 +89,11 @@ class CarsController < ApplicationController
   def update
     respond_to do |format|
       if @car.update(car_params)
-        format.html { redirect_to @car, notice: 'Car was successfully updated.' }
-        format.json { render :show, status: :ok, location: @car }
+        format.html {redirect_to @car, notice: 'Car was successfully updated.'}
+        format.json {render :show, status: :ok, location: @car}
       else
-        format.html { render :edit }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @car.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -94,8 +103,8 @@ class CarsController < ApplicationController
   def destroy
     @car.destroy
     respond_to do |format|
-       format.html { redirect_to cars_url, notice: 'Car was successfully destroyed.' }
-       format.json { head :no_content }
+      format.html {redirect_to cars_url, notice: 'Car was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
@@ -133,7 +142,7 @@ class CarsController < ApplicationController
     # if @car.status == "Checkout"
     @car.update_attributes(:status => "Available")
     respond_to do |format|
-      format.html { redirect_to @car, notice: 'Car was successfully returned.' }
+      format.html {redirect_to @car, notice: 'Car was successfully returned.'}
     end
     # end
 
@@ -142,17 +151,17 @@ class CarsController < ApplicationController
 
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_car
-      @car = Car.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_car
+    @car = Car.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def car_params
-      params.require(:car).permit(:lpn, :manufactuere, :model, :hrr, :style, :location, :status, :img_attach)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def car_params
+    params.require(:car).permit(:lpn, :manufactuere, :model, :hrr, :style, :location, :status, :img_attach)
+  end
 
-    def reservation_params
-      params.require(:reservation).permit(:lpn, :email, :expect_start_time, :expect_return_time)
-    end
+  def reservation_params
+    params.require(:reservation).permit(:lpn, :email, :expect_start_time, :expect_return_time)
+  end
 end
