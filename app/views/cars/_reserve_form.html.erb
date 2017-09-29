@@ -1,12 +1,10 @@
 <%= form_for :reservation do |f| %>
-    <%= f.label :email %>
-    <% if current_user %>
+    <% if login_authority == "customer" %>
         <%= f.hidden_field :email, :value => current_user.email %>
     <% else %>
+        <%= f.label :email,"Customer Email" %>
         <%= f.email_field :email %>
     <% end %>
-
-    <%= f.label :lpn %>
     <%= f.hidden_field :lpn %>
 
     <%= f.label :expect_start_time %>
