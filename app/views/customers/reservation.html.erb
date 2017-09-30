@@ -9,7 +9,7 @@
         <th>Lisence-Plate Number</th>
         <!-- <th colspan="2">operation</th> -->
         <th>Checkout Time</th>
-        <th>Operation</th>
+        <th colspan="3">Operation</th>
       </tr>
       </thead>
 
@@ -22,6 +22,7 @@
             <td><%= r.expect_start_time%></td>
             <% if r.status == "Reserved" %>
               <td><%= link_to 'Checkout', checkout_path(:reservation => {:lpn => r.lpn}) %></td>
+              <td><%= link_to 'Cancel', cancel_path(:reservation => {:lpn => r.lpn})%></td>
             <% else %>
               <td><%= link_to 'Return', returncar_path(:reservation => {:lpn => r.lpn}) %></td>
             <% end %>

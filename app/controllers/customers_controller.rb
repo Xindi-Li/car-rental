@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :has_authority?,except: [:new,:show, :create, :edit, :history, :reservation]
+  before_action :has_authority?,except: [:new,:show, :create, :edit, :history, :reservation, :cancel]
 
   # GET /customers
   # GET /customers.json
@@ -75,6 +75,21 @@ class CustomersController < ApplicationController
     email = params[:customer][:email]
     @reservations = Reservation.where(email: email)
   end
+
+  def cancel
+    lpn = params[:reservation][:lpn]
+    reservation = Reservation.where(lpn: lpn).where(status: "Reserved").first
+    car = Car.find_by_lpn(lpn)
+    car.update_attributes(:status => "Available")
+    reservation.destroy
+    # reservation.update_attributes(:status => "Canceled")
+
+    respond_to do |format|
+      format.html {redirect_to cars_url, notice: 'Reservation has been canceled.'}
+    end
+  end
+
+
 
   private
   # Use callbacks to share common setup or constraints between actions.

@@ -101,10 +101,23 @@ class CarsController < ApplicationController
   # DELETE /cars/1
   # DELETE /cars/1.json
   def destroy
-    @car.destroy
-    respond_to do |format|
-      format.html {redirect_to cars_url, notice: 'Car was successfully destroyed.'}
-      format.json {head :no_content}
+    # @car.destroy
+    car_lpn = @car.lpn
+    reservation = Reservation.where(lpn: car_lpn).where(status: "Checkout")
+    if reservation != []
+      respond_to do |format|
+        format.html {redirect_to cars_url, notice: "Can't delete a car currently checked out!"}
+      end
+    else
+      reservation = Reservation.where(lpn: car_lpn)
+      reservation.each do |r|
+        r.destroy
+      end
+      @car.destroy
+      respond_to do |format|
+        format.html {redirect_to cars_url, notice: 'Car was successfully destroyed.'}
+        format.json {head :no_content}
+      end
     end
   end
 
@@ -123,12 +136,18 @@ class CarsController < ApplicationController
     lpn = params[:reservation][:lpn]
     @reservation = Reservation.where(:lpn => lpn).where(:status => "Reserved").first
     current_time = Time.now
-    @reservation.update_attributes(:checkout_time => current_time)
-    @reservation.update_attributes(:status => "Checkout")
+    if current_time < @reservation.expect_start_time
+      respond_to do |format|
+        format.html {redirect_to customer_reservation_path(:customer => {:email => @reservation.email}), notice: "Can't checkout a car before your checkout time."}
+      end
+    else
+      @reservation.update_attributes(:checkout_time => current_time)
+      @reservation.update_attributes(:status => "Checkout")
 
-    @car = Car.find_by_lpn(lpn)
-    @car.update_attributes(:status => "Checkout")
-    @car
+      @car = Car.find_by_lpn(lpn)
+      @car.update_attributes(:status => "Checkout")
+      @car
+    end
   end
 
   def return_car
@@ -141,6 +160,9 @@ class CarsController < ApplicationController
     @car = Car.find_by_lpn(lpn)
     # if @car.status == "Checkout"
     @car.update_attributes(:status => "Available")
+    car_hrr = @car.hrr
+    rental_time = (@reservation.return_time - @reservation.checkout_time)/3600
+    @reservation.update_attributes(:charge => (car_hrr*rental_time).round(2))
     respond_to do |format|
       format.html {redirect_to @car, notice: 'Car was successfully returned.'}
     end

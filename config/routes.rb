@@ -21,9 +21,11 @@ Rails.application.routes.draw do
   get '/carhistory', to: 'cars#history'
   get '/customer_reservation', to: 'customers#reservation'
   get '/customer_history', to: 'customers#history'
+  get '/cancel', to: 'customers#cancel'
 
   get '/checkout', to: 'cars#checkout'
   get '/returncar', to: 'cars#return_car'
+
 
   # get '/reservation', to: 'reservation#new'
   # post '/reservation', to: 'reservation#reserve' :as => :reservation
