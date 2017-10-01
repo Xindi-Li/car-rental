@@ -39,6 +39,6 @@
 <%= image_tag @car.img_attach.url if @car.img_attach? %>
 <p></p>
 
-<%= link_to 'return', returncar_path(:reservation => {:lpn => @car.lpn}) %>
+<%= link_to 'Return', returncar_path(:reservation => {:lpn => @car.lpn}) %>
 <%= link_to 'Edit', edit_car_path(@car) %> |
 <%= link_to 'Back', cars_path %>
