@@ -15,6 +15,9 @@ class CarsController < ApplicationController
     end
   end
 
+  # def edit_reserve
+  # end
+
 
   def new_reserve
     email = params[:reserve][:email]
@@ -37,9 +40,13 @@ class CarsController < ApplicationController
 
     @reservation = Reservation.create(reservation_params)
 
-
     respond_to do |format|
+      user = User.find_by_email(@reservation.email)
+      if !user
+        format.html {redirect_to reserve_path(:lpn => @reservation.lpn), notice: 'Customer does not exist'}
+      end
       if @reservation.save
+        checkout_timer @reservation.expect_start_time, @reservation.id, @reservation.lpn
         @car = Car.find_by_lpn(@reservation.lpn)
         if @car.status == "Available"
           @car.status = "Reserved"
@@ -149,6 +156,8 @@ class CarsController < ApplicationController
         format.html {redirect_to customer_reservation_path(:customer => {:email => @reservation.email}), notice: "Can't checkout a car before your checkout time."}
       end
     else
+      return_timer @reservation.expect_return_time,@reservation.id,@reservation.lpn
+
       @reservation.update_attributes(:checkout_time => current_time)
       @reservation.update_attributes(:status => "Checkout")
 
