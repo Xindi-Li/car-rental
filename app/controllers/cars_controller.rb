@@ -17,9 +17,17 @@ class CarsController < ApplicationController
 
 
   def new_reserve
-    # @car =
-    lpn = params[:lpn]
-    @reservation = Reservation.new(:lpn => lpn)
+    email = params[:reserve][:email]
+    @reservation1 = Reservation.where(email: email).where(status: "Checkout")
+    @reservation2 = Reservation.where(email: email).where(status: "Reserved")
+    if @reservation1 != [] || @reservation2 != []
+      respond_to do |format|
+        format.html {redirect_to cars_url, notice: "You can't reserve more than one car at the same time."}
+      end
+    else
+      lpn = params[:reserve][:lpn]
+      @reservation = Reservation.new(:lpn => lpn)
+    end
   end
 
   def create_reserve
@@ -163,6 +171,17 @@ class CarsController < ApplicationController
     car_hrr = @car.hrr
     rental_time = (@reservation.return_time - @reservation.checkout_time)/3600
     @reservation.update_attributes(:charge => (car_hrr*rental_time).round(2))
+    user_email = @reservation.email
+    user = User.find_by_email(user_email)
+    if user.rental_charge == nil
+      rental_charge = 0
+    else
+      rental_charge = user.rental_charge
+    end
+
+    rental_charge += car_hrr*rental_time
+    user.update_attributes(:rental_charge => rental_charge.round(2))
+
     respond_to do |format|
       format.html {redirect_to @car, notice: 'Car was successfully returned.'}
     end

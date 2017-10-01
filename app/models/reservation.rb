@@ -2,7 +2,7 @@ class Reservation < ApplicationRecord
 	validates :lpn, :email, :expect_start_time, :expect_return_time, presence:true
 	# validates :expect_start_time, :expect_return_time, numericality:{greater_than:Time.now}
 
-	validate :timeValidation
+	validate :timeValidation, on: :create
 
 	def timeValidation
 		if expect_start_time < Time.now || expect_start_time > Time.now + 7.days
@@ -10,7 +10,7 @@ class Reservation < ApplicationRecord
 		elsif  expect_return_time < Time.now || expect_return_time <= expect_start_time
 			errors.add(:expect_return_time, "should be later than expect start time!")
 		elsif expect_return_time - expect_start_time > 10.hours
-			errors.add("Total rental time should be no more than 10 hours.")
+			errors.add(:expect_return_time, :expect_start_time, "Total rental time should be no more than 10 hours.")
 		end
 	end
 				

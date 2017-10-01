@@ -58,10 +58,25 @@ class CustomersController < ApplicationController
   # DELETE /customers/1
   # DELETE /customers/1.json
   def destroy
-    @customer.destroy
-    respond_to do |format|
-      format.html {redirect_to customers_url, notice: 'Customer was successfully destroyed.'}
-      format.json {head :no_content}
+    email = @customer.email
+    reservation = Reservation.where(email: email).where(status: "Checkout")
+    if reservation != []
+      respond_to do |format|
+        format.html {redirect_to customers_url, notice: "Can't delete this customer as he/she still has a car checked out!"}
+      end
+    else
+      reservations = Reservation.where(email: email)
+      reservations.each do |r|
+        car_lpn = r.lpn
+        car = Car.find_by_lpn(car_lpn)
+        car.update_attributes(:status => "Available")
+        r.destroy
+      end
+      @customer.destroy
+      respond_to do |format|
+        format.html {redirect_to customers_url, notice: 'Customer was successfully destroyed.'}
+        format.json {head :no_content}
+      end
     end
   end
 
