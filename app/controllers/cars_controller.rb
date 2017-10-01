@@ -30,6 +30,10 @@ class CarsController < ApplicationController
     @reservation = Reservation.create(reservation_params)
 
     respond_to do |format|
+      user = User.find_by_email(@reservation.email)
+      if !user
+        format.html {redirect_to reserve_path(:lpn => @reservation.lpn), notice: 'Customer does not exist'}
+      end
       if @reservation.save
         checkout_timer @reservation.expect_start_time, @reservation.id, @reservation.lpn
         @car = Car.find_by_lpn(@reservation.lpn)

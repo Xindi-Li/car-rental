@@ -35737,3 +35737,371 @@ Processing by CustomersController#reservation as HTML
 Completed 200 OK in 34ms (Views: 24.7ms | ActiveRecord: 6.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-10-01 13:28:09 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (750.0ms)
+Completed 200 OK in 1889ms (Views: 828.4ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-10-01 13:28:13 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (140.1ms)
+Completed 200 OK in 178ms (Views: 162.3ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-01 13:28:17 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NQU0ETSrOeXinfIMhxeOHbIDGgvczIPSJCe8g3pj3SmJJxNMvoHlEk+iBFt4i9YO8g8vL7oMEmTw8xp+pFFtdg==", "session"=>{"email"=>"123@123", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "123@123"], ["LIMIT", 1]]
+  [1m[36mNotification Load (1.7ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."email" = ? LIMIT ?[0m  [["email", "123@123"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 650ms (ActiveRecord: 36.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-01 13:28:18 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (20.3ms)
+Completed 200 OK in 102ms (Views: 100.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-01 13:28:40 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (8.8ms)
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (32.1ms)
+Completed 200 OK in 99ms (Views: 53.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:29:09 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (56.7ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (69.1ms)
+Completed 200 OK in 164ms (Views: 91.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:32:41 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (74.8ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (81.0ms)
+Completed 200 OK in 194ms (Views: 122.9ms | ActiveRecord: 5.1ms)
+
+
+Started POST "/reserve" for 127.0.0.1 at 2017-10-01 13:32:45 -0400
+Processing by CarsController#create_reserve as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1phwn1N6yvjXq05pYAekN8b75QW2T1HHsWks2Qgx8eDfH0qWAeiazD7wyb5RNBP8LKPao5LHT5AFqlFWLOytAg==", "reservation"=>{"email"=>"2@2", "lpn"=>"1234", "expect_start_time(1i)"=>"2017", "expect_start_time(2i)"=>"10", "expect_start_time(3i)"=>"1", "expect_start_time(4i)"=>"13", "expect_start_time(5i)"=>"32", "expect_return_time(1i)"=>"2017", "expect_return_time(2i)"=>"10", "expect_return_time(3i)"=>"1", "expect_return_time(4i)"=>"13", "expect_return_time(5i)"=>"32"}, "commit"=>"Reserve"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (13.6ms)[0m  [1m[32mINSERT INTO "reservations" ("email", "lpn", "expect_start_time", "expect_return_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "2@2"], ["lpn", "1234"], ["expect_start_time", "2017-10-01 13:32:00"], ["expect_return_time", "2017-10-01 13:32:00"], ["created_at", "2017-10-01 13:32:45.750482"], ["updated_at", "2017-10-01 13:32:45.750482"]]
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "2@2"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 20.6ms)
+
+
+  
+ArgumentError (too few arguments):
+  
+app/controllers/cars_controller.rb:33:in `format'
+app/controllers/cars_controller.rb:33:in `create_reserve'
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:35:09 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (46.3ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (51.7ms)
+Completed 200 OK in 126ms (Views: 82.2ms | ActiveRecord: 6.1ms)
+
+
+Started POST "/reserve" for 127.0.0.1 at 2017-10-01 13:35:13 -0400
+Processing by CarsController#create_reserve as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qXXwexI1rfS+dTATkrwzDIea93VWfW6MbRqIc7wM7g2g8spyQKf9wFcut8Sjj4THbcLI03L1cNvZ2fX8mNGy7w==", "reservation"=>{"email"=>"2@2", "lpn"=>"1234", "expect_start_time(1i)"=>"2017", "expect_start_time(2i)"=>"10", "expect_start_time(3i)"=>"1", "expect_start_time(4i)"=>"13", "expect_start_time(5i)"=>"35", "expect_return_time(1i)"=>"2017", "expect_return_time(2i)"=>"10", "expect_return_time(3i)"=>"1", "expect_return_time(4i)"=>"13", "expect_return_time(5i)"=>"35"}, "commit"=>"Reserve"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.4ms)[0m  [1m[32mINSERT INTO "reservations" ("email", "lpn", "expect_start_time", "expect_return_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "2@2"], ["lpn", "1234"], ["expect_start_time", "2017-10-01 13:35:00"], ["expect_return_time", "2017-10-01 13:35:00"], ["created_at", "2017-10-01 13:35:13.335230"], ["updated_at", "2017-10-01 13:35:13.335230"]]
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "2@2"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 12.4ms)
+
+
+  
+ArgumentError (too few arguments):
+  
+app/controllers/cars_controller.rb:33:in `format'
+app/controllers/cars_controller.rb:33:in `create_reserve'
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:35:40 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (8.1ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 41ms (Views: 39.5ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/reserve" for 127.0.0.1 at 2017-10-01 13:35:43 -0400
+Processing by CarsController#create_reserve as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cCZlvHCJTUU+E9CoYDjoHg4tezJfDwSEuh5EEhyNaNt5oV+1IhsdcddIV39RC1/V5HVElHuHGtMO3TmdOFA0OQ==", "reservation"=>{"email"=>"1@1", "lpn"=>"1234", "expect_start_time(1i)"=>"2017", "expect_start_time(2i)"=>"10", "expect_start_time(3i)"=>"1", "expect_start_time(4i)"=>"13", "expect_start_time(5i)"=>"35", "expect_return_time(1i)"=>"2017", "expect_return_time(2i)"=>"10", "expect_return_time(3i)"=>"1", "expect_return_time(4i)"=>"13", "expect_return_time(5i)"=>"35"}, "commit"=>"Reserve"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "reservations" ("email", "lpn", "expect_start_time", "expect_return_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "1@1"], ["lpn", "1234"], ["expect_start_time", "2017-10-01 13:35:00"], ["expect_return_time", "2017-10-01 13:35:00"], ["created_at", "2017-10-01 13:35:43.275862"], ["updated_at", "2017-10-01 13:35:43.275862"]]
+  [1m[35m (13.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "1@1"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 14.6ms)
+
+
+  
+ArgumentError (too few arguments):
+  
+app/controllers/cars_controller.rb:33:in `format'
+app/controllers/cars_controller.rb:33:in `create_reserve'
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:37:30 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (54.0ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (62.2ms)
+Completed 200 OK in 136ms (Views: 104.5ms | ActiveRecord: 5.4ms)
+
+
+Started POST "/reserve" for 127.0.0.1 at 2017-10-01 13:37:43 -0400
+Processing by CarsController#create_reserve as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DK91m/yIWpF2fsFJ0HrOYE97hSd9Vpm4DQyC/cR6N1cFKE+SrhoKpZ8lRp7hSXmrpSO6gVneh++5z/9y4KdrtQ==", "reservation"=>{"email"=>"1@1", "lpn"=>"1234", "expect_start_time(1i)"=>"2017", "expect_start_time(2i)"=>"10", "expect_start_time(3i)"=>"1", "expect_start_time(4i)"=>"13", "expect_start_time(5i)"=>"37", "expect_return_time(1i)"=>"2017", "expect_return_time(2i)"=>"10", "expect_return_time(3i)"=>"1", "expect_return_time(4i)"=>"13", "expect_return_time(5i)"=>"37"}, "commit"=>"Reserve"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "reservations" ("email", "lpn", "expect_start_time", "expect_return_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "1@1"], ["lpn", "1234"], ["expect_start_time", "2017-10-01 13:37:00"], ["expect_return_time", "2017-10-01 13:37:00"], ["created_at", "2017-10-01 13:37:43.622427"], ["updated_at", "2017-10-01 13:37:43.622427"]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "1@1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+time_to_do: 2017-10-01 13:38:00 -0400, id: 87
+  [1m[36mCar Load (0.7ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "1234"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCar Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cars" WHERE "cars"."lpn" = ? AND ("cars"."id" != ?) LIMIT ?[0m  [["lpn", "1234"], ["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cars" SET "status" = ?, "updated_at" = ? WHERE "cars"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-01 13:37:43.719878"], ["id", 9]]
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "reservations" SET "status" = ?, "updated_at" = ? WHERE "reservations"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-01 13:37:43.732750"], ["id", 87]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/reserve?lpn=1234
+Completed 302 Found in 120ms (ActiveRecord: 22.2ms)
+
+
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:37:43 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (26.7ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (29.8ms)
+Completed 200 OK in 55ms (Views: 52.3ms | ActiveRecord: 0.7ms)
+
+
+hello, it's 2017-10-01 13:38:00 -0400
+  [1m[36mReservation Load (0.6ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT ?[0m  [["id", 87], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 87]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35mSQL (5.9ms)[0m  [1m[33mUPDATE "cars" SET "status" = 'Available' WHERE "cars"."lpn" = ?[0m  [["lpn", "1234"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notifications" ("email", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "1@1"], ["message", "You do not check out the car on time !"], ["created_at", "2017-10-01 13:38:00.274414"], ["updated_at", "2017-10-01 13:38:00.274414"]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:39:04 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (12.9ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 36ms (Views: 33.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:39:06 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (8.6ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 26ms (Views: 25.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:39:07 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (23.5ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (25.2ms)
+Completed 200 OK in 83ms (Views: 80.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/reserve" for 127.0.0.1 at 2017-10-01 13:39:14 -0400
+Processing by CarsController#create_reserve as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eqIOo88Jhrrw7mF/418IkzL0TPkYW0aRDkCf4iVm91BzJTSqnZvWjhm15qjSbL9Y2KxzXzzTWMa6g+JtAbursg==", "reservation"=>{"email"=>"1@1", "lpn"=>"1234", "expect_start_time(1i)"=>"2017", "expect_start_time(2i)"=>"10", "expect_start_time(3i)"=>"1", "expect_start_time(4i)"=>"13", "expect_start_time(5i)"=>"39", "expect_return_time(1i)"=>"2017", "expect_return_time(2i)"=>"10", "expect_return_time(3i)"=>"1", "expect_return_time(4i)"=>"13", "expect_return_time(5i)"=>"39"}, "commit"=>"Reserve"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "reservations" ("email", "lpn", "expect_start_time", "expect_return_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "1@1"], ["lpn", "1234"], ["expect_start_time", "2017-10-01 13:39:00"], ["expect_return_time", "2017-10-01 13:39:00"], ["created_at", "2017-10-01 13:39:14.410097"], ["updated_at", "2017-10-01 13:39:14.410097"]]
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "1@1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+time_to_do: 2017-10-01 13:40:00 -0400, id: 88
+  [1m[36mCar Load (0.4ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "1234"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCar Exists (1.7ms)[0m  [1m[34mSELECT  1 AS one FROM "cars" WHERE "cars"."lpn" = ? AND ("cars"."id" != ?) LIMIT ?[0m  [["lpn", "1234"], ["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cars" SET "status" = ?, "updated_at" = ? WHERE "cars"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-01 13:39:14.434771"], ["id", 9]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "reservations" SET "status" = ?, "updated_at" = ? WHERE "reservations"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-01 13:39:14.442760"], ["id", 88]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/reserve?lpn=1234
+Completed 302 Found in 51ms (ActiveRecord: 15.0ms)
+
+
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:39:14 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (30.3ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (32.9ms)
+Completed 200 OK in 70ms (Views: 63.6ms | ActiveRecord: 0.3ms)
+
+
+hello, it's 2017-10-01 13:40:00 -0400
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT ?[0m  [["id", 88], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 88]]
+  [1m[35m (10.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[33mUPDATE "cars" SET "status" = 'Available' WHERE "cars"."lpn" = ?[0m  [["lpn", "1234"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notifications" ("email", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "1@1"], ["message", "You do not check out the car on time !"], ["created_at", "2017-10-01 13:40:00.144833"], ["updated_at", "2017-10-01 13:40:00.144833"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:40:19 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (28.3ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (30.6ms)
+Completed 200 OK in 3086ms (Views: 3083.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/reserve" for 127.0.0.1 at 2017-10-01 13:40:25 -0400
+Processing by CarsController#create_reserve as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SMT1bTx09R3P04vGdXkpNcEbG+ItrvOklIED5TE7Y0pBQ89kbualKSaIDBFESp7+K0MkRAkm7fMgQn5qFeY/qA==", "reservation"=>{"email"=>"1@1", "lpn"=>"1234", "expect_start_time(1i)"=>"2017", "expect_start_time(2i)"=>"10", "expect_start_time(3i)"=>"1", "expect_start_time(4i)"=>"13", "expect_start_time(5i)"=>"40", "expect_return_time(1i)"=>"2017", "expect_return_time(2i)"=>"10", "expect_return_time(3i)"=>"1", "expect_return_time(4i)"=>"13", "expect_return_time(5i)"=>"40"}, "commit"=>"Reserve"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "reservations" ("email", "lpn", "expect_start_time", "expect_return_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "1@1"], ["lpn", "1234"], ["expect_start_time", "2017-10-01 13:40:00"], ["expect_return_time", "2017-10-01 13:40:00"], ["created_at", "2017-10-01 13:40:25.799261"], ["updated_at", "2017-10-01 13:40:25.799261"]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "1@1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+time_to_do: 2017-10-01 13:41:00 -0400, id: 89
+  [1m[36mCar Load (1.4ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "1234"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCar Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cars" WHERE "cars"."lpn" = ? AND ("cars"."id" != ?) LIMIT ?[0m  [["lpn", "1234"], ["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cars" SET "status" = ?, "updated_at" = ? WHERE "cars"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-01 13:40:25.826860"], ["id", 9]]
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "reservations" SET "status" = ?, "updated_at" = ? WHERE "reservations"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-01 13:40:25.834527"], ["id", 89]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/reserve?lpn=1234
+Completed 302 Found in 49ms (ActiveRecord: 13.3ms)
+
+
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:40:25 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (27.6ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (31.7ms)
+Completed 200 OK in 64ms (Views: 59.3ms | ActiveRecord: 1.0ms)
+
+
+hello, it's 2017-10-01 13:41:00 -0400
+  [1m[36mReservation Load (0.4ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT ?[0m  [["id", 89], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 89]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35mSQL (8.1ms)[0m  [1m[33mUPDATE "cars" SET "status" = 'Available' WHERE "cars"."lpn" = ?[0m  [["lpn", "1234"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "notifications" ("email", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "1@1"], ["message", "You do not check out the car on time !"], ["created_at", "2017-10-01 13:41:00.100689"], ["updated_at", "2017-10-01 13:41:00.100689"]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:41:10 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (22.4ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (27.2ms)
+Completed 200 OK in 2926ms (Views: 2923.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/reserve" for 127.0.0.1 at 2017-10-01 13:41:15 -0400
+Processing by CarsController#create_reserve as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hl916YIck5Fyg5vzMX4YWkiwbCKLnBEUuaan7ImJgRgX2E/g0I7DpZvYHCQATa+RouhThK8UD0MNZdpjrVTd+g==", "reservation"=>{"email"=>"1@1", "lpn"=>"1234", "expect_start_time(1i)"=>"2017", "expect_start_time(2i)"=>"10", "expect_start_time(3i)"=>"1", "expect_start_time(4i)"=>"13", "expect_start_time(5i)"=>"41", "expect_return_time(1i)"=>"2017", "expect_return_time(2i)"=>"10", "expect_return_time(3i)"=>"1", "expect_return_time(4i)"=>"13", "expect_return_time(5i)"=>"41"}, "commit"=>"Reserve"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "reservations" ("email", "lpn", "expect_start_time", "expect_return_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "1@1"], ["lpn", "1234"], ["expect_start_time", "2017-10-01 13:41:00"], ["expect_return_time", "2017-10-01 13:41:00"], ["created_at", "2017-10-01 13:41:15.870073"], ["updated_at", "2017-10-01 13:41:15.870073"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "1@1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+time_to_do: 2017-10-01 13:42:00 -0400, id: 90
+  [1m[36mCar Load (0.5ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "1234"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCar Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cars" WHERE "cars"."lpn" = ? AND ("cars"."id" != ?) LIMIT ?[0m  [["lpn", "1234"], ["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cars" SET "status" = ?, "updated_at" = ? WHERE "cars"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-01 13:41:15.916551"], ["id", 9]]
+  [1m[35m (28.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "reservations" SET "status" = ?, "updated_at" = ? WHERE "reservations"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-01 13:41:15.950966"], ["id", 90]]
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/reserve?lpn=1234
+Completed 302 Found in 91ms (ActiveRecord: 37.0ms)
+
+
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:41:15 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (14.3ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (19.2ms)
+Completed 200 OK in 62ms (Views: 59.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reserve?lpn=1234" for 127.0.0.1 at 2017-10-01 13:41:32 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"lpn"=>"1234"}
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (30.3ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (32.5ms)
+Completed 200 OK in 78ms (Views: 75.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-01 13:41:49 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 55ms (Views: 52.8ms | ActiveRecord: 0.2ms)
+
+
+hello, it's 2017-10-01 13:42:00 -0400
+  [1m[36mReservation Load (1.2ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT ?[0m  [["id", 90], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 90]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35mSQL (5.8ms)[0m  [1m[33mUPDATE "cars" SET "status" = 'Available' WHERE "cars"."lpn" = ?[0m  [["lpn", "1234"]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notifications" ("email", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "1@1"], ["message", "You do not check out the car on time !"], ["created_at", "2017-10-01 13:42:00.134958"], ["updated_at", "2017-10-01 13:42:00.134958"]]
+  [1m[35m (3.0ms)[0m  [1m[36mcommit transaction[0m
