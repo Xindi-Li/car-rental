@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   get '/reserve', to: 'cars#new_reserve'
   post '/reserve', to: 'cars#create_reserve'
   get '/reserve/:id', to: 'cars#show_reserve'
+  get '/edit', to: 'cars#edit_reserve'
+  post '/edit', to: 'cars#update_reserve'
+  get '/reservations', to: 'cars#index_reserve'
+
 
   get '/carhistory', to: 'cars#history'
   get '/customer_reservation', to: 'customers#reservation'

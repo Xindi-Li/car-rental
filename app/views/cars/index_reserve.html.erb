@@ -1,0 +1,39 @@
+<h2 id="notice"><%= notice %></h2>
+
+<h1>Reservations</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>License-plate Number</th>
+    <th>Email</th>
+    <th>Expect Checkout Time</th>
+    <th>Checkout Time</th>
+    <th>Expect Return Time</th>
+    <th>Return Time</th>
+    <th>Status</th>
+    <th>Charges</th>
+    <th colspan="4">Operations</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @reservations.each do |r| %>
+	  <tr>
+	    <td><%= r.lpn %></td>
+	    <td><%= r.email %></td>
+	    <td><%= r.expect_start_time %></td>
+	    <td><%= r.checkout_time %></td>
+	    <td><%= r.expect_return_time %></td>
+	    <td><%= r.return_time %></td>
+	    <td><%= r.status %></td>
+	    <td><%= r.charge %></td>
+      <% if r.status == "Reserved" %>
+          <td><%= link_to 'Modify', edit_path(:id => r.id) %></td>
+          <% else %>
+      <td></td>
+      <% end %>
+	  </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -13,6 +13,7 @@
             <%= link_to 'Manage admins', admins_path, class: "btn btn-default btn-lg", id: "welcome" %>
             <%= link_to 'Manage customers', customers_path, class: "btn btn-default btn-lg", id: "welcome" %>
             <%= link_to 'Manage cars', cars_path, class: "btn btn-default btn-lg", id: "welcome" %>
+            <%= link_to 'Manage reservations', reservations_path, class: "btn btn-default btn-lg", id: "welcome"%>
         <% end %>
         <% if login_authority.eql? 'admin' %>
             <%= link_to 'Manage admins', admins_path, class: "btn btn-default btn-lg", id: "welcome" %>

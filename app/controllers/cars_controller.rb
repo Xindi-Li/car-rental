@@ -15,8 +15,28 @@ class CarsController < ApplicationController
     end
   end
 
-  # def edit_reserve
-  # end
+  def edit_reserve
+    id = params[:id]
+    @reservation = Reservation.find(id)
+  end
+
+  def update_reserve
+    customer_email = params[:reservation][:email]
+    car_lpn = params[:reservation][:lpn]
+    @reservation = Reservation.where(email: customer_email).where(lpn: car_lpn).where(status: "Reserved").first
+    respond_to do |format|
+      if @reservation.update(reservation_params)
+        format.html {redirect_to reservations_path, notice: 'Reservation was successfully updated.'}
+      else
+        format.html {redirect_to edit_path(:id => @reservation.id), notice: @reservation.errors.full_messages[0]}
+
+      end
+    end
+  end
+
+  def index_reserve
+    @reservations = Reservation.all
+  end
 
 
   def new_reserve
@@ -212,6 +232,6 @@ class CarsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:lpn, :email, :expect_start_time, :expect_return_time)
+    params.require(:reservation).permit(:lpn, :email, :expect_start_time, :expect_return_time, :status)
   end
 end
