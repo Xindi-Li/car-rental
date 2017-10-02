@@ -56,7 +56,7 @@ class CarsController < ApplicationController
         format.html {redirect_to @car, notice: 'Reservation was successfully made.'}
         #   format.json { render :show_reserve, status: :reserved, location: @reservation }
       else
-        format.html {render :new_reserve}
+        format.html {redirect_to reserve_path(:reserve => {:email => @reservation.email, :lpn => @reservation.lpn}), notice: @reservation.errors.full_messages[0]}
       end
     end
   end

@@ -27,7 +27,8 @@ module CarsHelper
       if reservation&&reservation.status == 'Checkout'
         reservation.update_attributes(:return_time => Time.now)
         reservation.update_attributes(:status => "Returned")
-        car = Car.where(:lpn => lpn)
+        debugger
+        car = Car.find_by_lpn(lpn)
         car.update_attributes(:status => "Available")
         car_hrr = car.hrr
         rental_time = (reservation.return_time - reservation.checkout_time)/3600
