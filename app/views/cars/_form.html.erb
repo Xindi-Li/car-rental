@@ -1,7 +1,7 @@
 <%= form_with(model: car, local: true) do |f| %>
     <% if car.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h2>
+          <h3><%= pluralize(car.errors.count, "error") %> prohibited this car from being saved:</h3>
 
           <ul>
             <% car.errors.full_messages.each do |message| %>
@@ -11,7 +11,7 @@
         </div>
     <% end %>
 
-    <%= f.label :lpn %>
+    <%= f.label 'License-plate number' %>
     <%= f.text_field :lpn %>
 
     <%= f.label :manufactuere %>
@@ -21,7 +21,7 @@
     <%= f.text_field :model %>
 
 
-    <%= f.label :hrr %>
+    <%= f.label 'Hourly rental rate' %>
     <%= f.number_field :hrr, :step => 0.01 %>
 
 

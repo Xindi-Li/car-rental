@@ -1,8 +1,8 @@
 <%= form_for(:car, method: :get, :html => {class: 'form-inline'}) do |f| %>
     <div class="row">
       <div class="col-md-4">
-        <%= f.label :lpn %>
-        <%= f.text_field :lpn, placeholder: 'lpn' %>
+        <%= f.label 'License-plate number' %>
+        <%= f.text_field :lpn, placeholder: 'License-plate number' %>
       </div>
       <div class="col-md-4">
         <%= f.label :manufactuere %>
@@ -15,8 +15,8 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-        <%= f.label :hrr %>
-        <%= f.text_field :hrr, placeholder: 'hrr' %>
+        <%= f.label 'Hourly rental rate' %>
+        <%= f.text_field :hrr, placeholder: 'Hourly rental rate' %>
       </div>
       <div class="col-md-4">
         <%= f.label :style %>

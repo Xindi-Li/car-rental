@@ -16,7 +16,7 @@
 </p>
 
 <p>
-  <strong>Hourly Rental Rate</strong>
+  <strong>Hourly rental rate</strong>
   <%= @car.hrr %>
 </p>
 
@@ -34,10 +34,10 @@
   <strong>Status</strong>
   <%= @car.status %>
 </p>
-
-<strong>Image</strong>
-<%= image_tag @car.img_attach.url if @car.img_attach? %>
-<br><br>
+<% if @car.img_attach? %>
+    <strong>Image</strong>
+    <%= image_tag (@car.img_attach.url),class: 'img-responsive center-block' %>
+<% end %>
 <p>
   <%= link_to 'Checkout History', carhistory_path(:car => {:carlpn => @car.lpn}) %>
 </p>
