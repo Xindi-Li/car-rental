@@ -1,0 +1,20 @@
+<%= form_for :reservation do |f| %>
+    <% if login_authority == "customer" %>
+        <%= f.hidden_field :email, :value => current_user.email %>
+    <% else %>
+        <%= f.label :email,"Customer Email" %>
+        <%= f.email_field :email %>
+    <% end %>
+    <%= f.hidden_field :lpn %>
+
+
+    <%= f.hidden_field :expect_start_time, :value => Time.now+30.seconds %>
+
+    <p>
+      <%= f.label :expect_return_time %>
+      <%= f.datetime_select :expect_return_time %>
+    </p>
+    <p>
+      <%= f.submit "Create", class: "tn btn-primary" %>
+    </p>
+<% end %>

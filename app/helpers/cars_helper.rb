@@ -25,14 +25,13 @@ module CarsHelper
       Rails.logger.info "hello, it's #{Time.now}"
       reservation = Reservation.find(id)
       if reservation&&reservation.status == 'Checkout'
-        reservation.update_attributes(:return_time => Time.now)
-        reservation.update_attributes(:status => "Returned")
-        debugger
+        reservation.update_attribute(:return_time , Time.now)
+        reservation.update_attribute(:status , "Returned")
         car = Car.find_by_lpn(lpn)
-        car.update_attributes(:status => "Available")
+        car.update_attribute(:status , "Available")
         car_hrr = car.hrr
         rental_time = (reservation.return_time - reservation.checkout_time)/3600
-        reservation.update_attributes(:charge => (car_hrr*rental_time).round(2))
+        reservation.update_attribute(:charge , (car_hrr*rental_time).round(2))
 
         notification = Notification.new(:email => reservation.email, :message => 'You do not return the car on time !')
         notification.save

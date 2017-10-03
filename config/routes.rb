@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   get '/checkout', to: 'cars#checkout'
   get '/returncar', to: 'cars#return_car'
 
+  get '/rent', to: 'cars#new_rent'
+  post '/rent', to: 'cars#create_rent'
+
 
   # get '/reservation', to: 'reservation#new'
   # post '/reservation', to: 'reservation#reserve' :as => :reservation

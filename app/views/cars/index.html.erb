@@ -13,7 +13,7 @@
     <th>Style</th>
     <th>Location</th>
     <th>Status</th>
-    <th colspan="4"></th>
+    <th colspan="5">Operations</th>
   </tr>
   </thead>
 
@@ -31,6 +31,7 @@
                 <td><%= car.status %></td>
                 <td><%= link_to 'Show', car %></td>
                 <td><%= link_to 'Reserve', reserve_path(:reserve => {:lpn => car.lpn, :email => current_user.email}) %></td>
+                <td><%= link_to 'Rent', rent_path(:reserve => {:lpn => car.lpn, :email => current_user.email}) %></td>
               </tr>
           <% end %>
       <% else %>
@@ -43,7 +44,8 @@
             <td><%= car.location %></td>
             <td><%= car.status %></td>
             <% if car.status.eql? 'Available' %>
-                <td><%= link_to 'Reserve', reserve_path(:lpn => car.lpn) %></td>
+                <td><%= link_to 'Reserve', reserve_path(:reserve =>{:lpn => car.lpn}) %></td>
+                <td><%= link_to 'Rent', rent_path(:reserve =>{:lpn => car.lpn}) %></td>
             <% else %>
                 <td></td>
             <% end %>

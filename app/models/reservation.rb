@@ -2,10 +2,10 @@ class Reservation < ApplicationRecord
 	validates :lpn, :email, :expect_start_time, :expect_return_time, presence:true
 	# validates :expect_start_time, :expect_return_time, numericality:{greater_than:Time.now}
 
-	validate :timeValidation, on: :create
-	validate :timeValidation, on: :update
+	validate :timeValidation
 	def timeValidation
 		if expect_start_time < Time.now || expect_start_time > Time.now + 7.days
+      Rails.logger.info "time : #{expect_start_time} ---- #{Time.now}"
 			errors.add(:expect_start_time, "should be within 7 days from now")
 		elsif  expect_return_time < Time.now || expect_return_time <= expect_start_time
 			errors.add(:expect_return_time, "should be later than expect start time!")

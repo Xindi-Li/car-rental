@@ -40,39 +40,41 @@ class CarsController < ApplicationController
 
 
   def new_reserve
-    email = params[:reserve][:email]
-    @reservation1 = Reservation.where(email: email).where(status: "Checkout")
-    @reservation2 = Reservation.where(email: email).where(status: "Reserved")
-    if @reservation1 != [] || @reservation2 != []
-      respond_to do |format|
-        format.html {redirect_to cars_url, notice: "You can't reserve more than one car at the same time."}
+    if params[:reserve]
+      email = params[:reserve][:email]
+      @reservation1 = Reservation.where(email: email).where(status: ["Checkout","Reserved"])
+      if @reservation1 != []
+        respond_to do |format|
+          format.html {redirect_to cars_url, notice: "You can't reserve more than one car at the same time."}
+        end
       end
-    else
-      lpn = params[:reserve][:lpn]
-      @reservation = Reservation.new(:lpn => lpn)
     end
+    lpn = params[:reserve][:lpn]
+    @reservation = Reservation.new(:lpn => lpn)
   end
 
   def create_reserve
-    expect_start_time = params[:expect_start_time]
-    expect_return_time = params[:expect_return_time]
-    current_time = Time.now
-
-    @reservation = Reservation.create(reservation_params)
+    @reservation = Reservation.new(reservation_params)
 
     respond_to do |format|
       user = User.find_by_email(@reservation.email)
       if !user
         format.html {redirect_to reserve_path(:lpn => @reservation.lpn), notice: 'Customer does not exist'}
+      else
+        @reservation1 = Reservation.where(email: user.email).where(status: ["Checkout","Reserved"])
+        if @reservation1 != []
+          format.html {redirect_to cars_url, notice: "The customer already has one reservation."}
+        end
       end
+
       if @reservation.save
         checkout_timer @reservation.expect_start_time, @reservation.id, @reservation.lpn
         @car = Car.find_by_lpn(@reservation.lpn)
         if @car.status == "Available"
           @car.status = "Reserved"
-          @car.update_attributes(:status => "Reserved")
+          @car.update_attribute(:status, "Reserved")
         end
-        @reservation.update_attributes(:status => "Reserved")
+        @reservation.update_attribute(:status, "Reserved")
         format.html {redirect_to @car, notice: 'Reservation was successfully made.'}
         #   format.json { render :show_reserve, status: :reserved, location: @reservation }
       else
@@ -82,6 +84,32 @@ class CarsController < ApplicationController
   end
 
   def show_reserve
+  end
+
+  def new_rent
+    new_reserve
+  end
+
+  def create_rent
+    @reservation = Reservation.new(reservation_params)
+    @reservation.checkout_time = Time.now
+    @reservation.status = 'Checkout'
+    respond_to do |format|
+      user = User.find_by_email(@reservation.email)
+      if !user
+        format.html {redirect_to reserve_path(:lpn => @reservation.lpn), notice: 'Customer does not exist'}
+      end
+      if @reservation.save
+        return_timer @reservation.expect_return_time, @reservation.id, @reservation.lpn
+        @reservation.update_attribute(:expect_start_time, Time.now)
+        @car = Car.find_by_lpn(@reservation.lpn)
+        @car.update_attribute(:status, "Checkout")
+        format.html {redirect_to @car, notice: 'Rent successfully.'}
+        #   format.json { render :show_reserve, status: :reserved, location: @reservation }
+      else
+        format.html {redirect_to rent_path(:reserve => {:email => @reservation.email, :lpn => @reservation.lpn}), notice: @reservation.errors.full_messages[0]}
+      end
+    end
   end
 
   def history
@@ -176,13 +204,12 @@ class CarsController < ApplicationController
         format.html {redirect_to customer_reservation_path(:customer => {:email => @reservation.email}), notice: "Can't checkout a car before your checkout time."}
       end
     else
-      return_timer @reservation.expect_return_time,@reservation.id,@reservation.lpn
-
-      @reservation.update_attributes(:checkout_time => current_time)
-      @reservation.update_attributes(:status => "Checkout")
+      return_timer @reservation.expect_return_time, @reservation.id, @reservation.lpn
+      @reservation.update_attribute(:checkout_time, current_time)
+      @reservation.update_attribute(:status, "Checkout")
 
       @car = Car.find_by_lpn(lpn)
-      @car.update_attributes(:status => "Checkout")
+      @car.update_attribute(:status, "Checkout")
       @car
     end
   end
@@ -191,15 +218,15 @@ class CarsController < ApplicationController
     lpn = params[:reservation][:lpn]
     @reservation = Reservation.where(:lpn => lpn).where(:status => "Checkout").first
     current_time = Time.now
-    @reservation.update_attributes(:return_time => current_time)
-    @reservation.update_attributes(:status => "Returned")
+    @reservation.update_attribute(:return_time, current_time)
+    @reservation.update_attribute(:status, "Returned")
 
     @car = Car.find_by_lpn(lpn)
     # if @car.status == "Checkout"
-    @car.update_attributes(:status => "Available")
+    @car.update_attribute(:status, "Available")
     car_hrr = @car.hrr
     rental_time = (@reservation.return_time - @reservation.checkout_time)/3600
-    @reservation.update_attributes(:charge => (car_hrr*rental_time).round(2))
+    @reservation.update_attribute(:charge, (car_hrr*rental_time).round(2))
     user_email = @reservation.email
     user = User.find_by_email(user_email)
     if user.rental_charge == nil
@@ -209,7 +236,7 @@ class CarsController < ApplicationController
     end
 
     rental_charge += car_hrr*rental_time
-    user.update_attributes(:rental_charge => rental_charge.round(2))
+    user.update_attribute(:rental_charge, rental_charge.round(2))
 
     respond_to do |format|
       format.html {redirect_to @car, notice: 'Car was successfully returned.'}

@@ -69,7 +69,7 @@ class CustomersController < ApplicationController
       reservations.each do |r|
         car_lpn = r.lpn
         car = Car.find_by_lpn(car_lpn)
-        car.update_attributes(:status => "Available")
+        car.update_attribute(:status , "Available")
         r.destroy
       end
       @customer.destroy
@@ -95,7 +95,7 @@ class CustomersController < ApplicationController
     lpn = params[:reservation][:lpn]
     reservation = Reservation.where(lpn: lpn).where(status: "Reserved").first
     car = Car.find_by_lpn(lpn)
-    car.update_attributes(:status => "Available")
+    car.update_attribute(:status , "Available")
     reservation.destroy
     # reservation.update_attributes(:status => "Canceled")
 
