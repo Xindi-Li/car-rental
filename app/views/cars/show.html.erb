@@ -39,6 +39,11 @@
     <%= image_tag (@car.img_attach.url),class: 'img-responsive center-block' %>
 <% end %>
 <p>
+  <%= link_to 'Current reservation', customer_reservation_path(:customer => {:email => current_user.email}) %>
+
+</p>
+
+<p>
   <%= link_to 'Checkout History', carhistory_path(:car => {:carlpn => @car.lpn}) %>
 </p>
 <p>

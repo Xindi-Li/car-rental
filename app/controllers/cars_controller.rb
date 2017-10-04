@@ -35,7 +35,7 @@ class CarsController < ApplicationController
   end
 
   def index_reserve
-    @reservations = Reservation.all
+    @reservations = Reservation.all.order(id: :desc)
   end
 
 

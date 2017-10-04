@@ -8,7 +8,16 @@
   <strong>Name:</strong>
   <%= @customer.name %>
 </p>
-
+<% if @customer.authority == 'customer' %>
+    <p>
+      <strong>Total rental charge: </strong>
+      <% if @customer.rental_charge.nil? %>
+          0
+      <% else %>
+          <%= @customer.rental_charge %>
+      <% end %>
+    </p>
+<% end %>
 <p><%= link_to 'Current Reservation', customer_reservation_path(:customer => {:email => @customer.email}) %></p>
 <p><%= link_to 'Reservation History', customer_history_path(:customer => {:email => @customer.email}) %></p>
 <p><%= link_to 'Edit', edit_customer_path(@customer) %></p>

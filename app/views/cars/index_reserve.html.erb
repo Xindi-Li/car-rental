@@ -19,21 +19,23 @@
 
   <tbody>
   <% @reservations.each do |r| %>
-	  <tr>
-	    <td><%= r.lpn %></td>
-	    <td><%= r.email %></td>
-	    <td><%= r.expect_start_time %></td>
-	    <td><%= r.checkout_time %></td>
-	    <td><%= r.expect_return_time %></td>
-	    <td><%= r.return_time %></td>
-	    <td><%= r.status %></td>
-	    <td><%= r.charge %></td>
-      <% if r.status == "Reserved" %>
-          <td><%= link_to 'Modify', edit_path(:id => r.id) %></td>
-          <% else %>
-      <td></td>
-      <% end %>
-	  </tr>
+      <tr>
+        <td><%= r.lpn %></td>
+        <td><%= r.email %></td>
+        <td><%= r.expect_start_time %></td>
+        <td><%= r.checkout_time %></td>
+        <td><%= r.expect_return_time %></td>
+        <td><%= r.return_time %></td>
+        <td><%= r.status %></td>
+        <td><%= r.charge %></td>
+        <% if r.status == "Reserved" %>
+            <td><%= link_to 'Modify', edit_path(:id => r.id) %></td>
+            <td><%= link_to 'Cancel', cancel_path(:reservation => {:lpn => r.lpn})%></td>
+        <% else %>
+            <td></td>
+            <td></td>
+        <% end %>
+      </tr>
   <% end %>
   </tbody>
 </table>

@@ -51608,3 +51608,1367 @@ Processing by WelcomeController#index as HTML
 Completed 200 OK in 36ms (Views: 34.7ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-10-03 22:46:07 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1305.7ms)
+Completed 200 OK in 1825ms (Views: 1367.5ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-10-03 22:46:10 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (131.6ms)
+Completed 200 OK in 162ms (Views: 147.7ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-03 22:46:14 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NnRaXnjWG8/LEzmSCheHIzGcqymJYQJl8YiEoqVMC1rObrqhlFyhsO7vBJXdLvaPjRzDtI8Qv8ryPJAfvd7e/g==", "session"=>{"email"=>"123@123", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "123@123"], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.1ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."email" = ? LIMIT ?[0m  [["email", "123@123"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 342ms (ActiveRecord: 15.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-03 22:46:14 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 37ms (Views: 35.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admins" for 127.0.0.1 at 2017-10-03 22:46:15 -0400
+Processing by AdminsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admins/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authority" = ?[0m  [["authority", "admin"]]
+  Rendered admins/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 35ms (Views: 22.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-03 22:46:17 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 57ms (Views: 54.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2017-10-03 22:46:20 -0400
+Processing by CustomersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authority" = ?[0m  [["authority", "customer"]]
+  Rendered customers/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 31ms (Views: 15.2ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/customers/13" for 127.0.0.1 at 2017-10-03 22:46:31 -0400
+Processing by CustomersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"bNXgp+V5nPM2d9pT1ZqYDf7ZApLXWWyHCk+XS2KfOBMzJJCf2K3F/DhYx1J29dgRn2p+yz/EQSqSg343HHN6+Q==", "id"=>"13"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mReservation Load (0.8ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" = ?[0m  [["email", "qwe@qwe"], ["status", "Checkout"]]
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ?[0m  [["email", "qwe@qwe"]]
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 13]]
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/customers
+Completed 302 Found in 42ms (ActiveRecord: 4.4ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2017-10-03 22:46:31 -0400
+Processing by CustomersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authority" = ?[0m  [["authority", "customer"]]
+  Rendered customers/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 74ms (Views: 63.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:04:25 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (1680.8ms)
+Completed 200 OK in 2301ms (Views: 1768.9ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-10-04 15:04:29 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (135.1ms)
+Completed 200 OK in 161ms (Views: 152.4ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-04 15:04:32 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uchiCZT3l0CUlobj4RmjsTpOGlxGalkf8f4T7n4BjzgumLTCq0353F2A5krmS46YXsNLyepLlHTDsgKFW6+VLA==", "session"=>{"email"=>"abc@abc", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "abc@abc"], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.2ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."email" = ? LIMIT ?[0m  [["email", "abc@abc"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 549ms (ActiveRecord: 24.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:04:32 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 51ms (Views: 49.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:04:34 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (5.0ms)
+  [1m[36mCar Load (0.3ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (47.9ms)
+Completed 200 OK in 112ms (Views: 67.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/rent?reserve%5Bemail%5D=abc%40abc&reserve%5Blpn%5D=567" for 127.0.0.1 at 2017-10-04 15:04:36 -0400
+Processing by CarsController#new_rent as HTML
+  Parameters: {"reserve"=>{"email"=>"abc@abc", "lpn"=>"567"}}
+  [1m[36mReservation Load (1.6ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "abc@abc"]]
+  Rendering cars/new_rent.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered cars/_rent_form.html.erb (35.6ms)
+  Rendered cars/new_rent.html.erb within layouts/application (37.4ms)
+Completed 200 OK in 108ms (Views: 48.9ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/rent" for 127.0.0.1 at 2017-10-04 15:04:39 -0400
+Processing by CarsController#create_rent as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+0ajREbiVajBNQVflDFfnd2Jbg7yF3WLA6KsCAUAFN3SfouKwtDrsKOobOfKJavZWW/Mq+eU+CwkpvmGICzVkA==", "reservation"=>{"email"=>"abc@abc", "lpn"=>"567", "expect_start_time"=>"2017-10-04 15:05:06 -0400", "expect_return_time(1i)"=>"2017", "expect_return_time(2i)"=>"10", "expect_return_time(3i)"=>"4", "expect_return_time(4i)"=>"15", "expect_return_time(5i)"=>"14"}, "commit"=>"Create"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "abc@abc"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "reservations" ("email", "lpn", "expect_start_time", "checkout_time", "expect_return_time", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "abc@abc"], ["lpn", "567"], ["expect_start_time", "2017-10-04 15:05:06"], ["checkout_time", "2017-10-04 15:04:39.472854"], ["expect_return_time", "2017-10-04 15:14:00"], ["status", "Checkout"], ["created_at", "2017-10-04 15:04:39.476241"], ["updated_at", "2017-10-04 15:04:39.476241"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+time_to_do: 2017-10-04 15:14:00 -0400, id: 136
+  [1m[35m (1.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.4ms)[0m  [1m[33mUPDATE "reservations" SET "expect_start_time" = ?, "updated_at" = ? WHERE "reservations"."id" = ?[0m  [["expect_start_time", "2017-10-04 15:04:39.488784"], ["updated_at", "2017-10-04 15:04:39.493362"], ["id", 136]]
+  [1m[35m (10.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mCar Load (1.5ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "567"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "cars" SET "status" = ?, "updated_at" = ? WHERE "cars"."id" = ?[0m  [["status", "Checkout"], ["updated_at", "2017-10-04 15:04:39.532923"], ["id", 5]]
+  [1m[35m (4.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/cars/5
+Completed 302 Found in 88ms (ActiveRecord: 28.6ms)
+
+
+Started GET "/cars/5" for 127.0.0.1 at 2017-10-04 15:04:39 -0400
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCar Load (1.3ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/show.html.erb within layouts/application (5.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+Completed 200 OK in 73ms (Views: 50.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:04:42 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 33ms (Views: 31.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:04:43 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (4.9ms)
+  [1m[36mCar Load (0.3ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (26.5ms)
+Completed 200 OK in 66ms (Views: 62.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/rent?reserve%5Bemail%5D=abc%40abc&reserve%5Blpn%5D=1234" for 127.0.0.1 at 2017-10-04 15:04:56 -0400
+Processing by CarsController#new_rent as HTML
+  Parameters: {"reserve"=>{"email"=>"abc@abc", "lpn"=>"1234"}}
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "abc@abc"]]
+Redirected to http://localhost:3000/cars
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:04:56 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (8.4ms)
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (24.6ms)
+Completed 200 OK in 46ms (Views: 44.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rent?reserve%5Bemail%5D=abc%40abc&reserve%5Blpn%5D=1234" for 127.0.0.1 at 2017-10-04 15:05:01 -0400
+Processing by CarsController#new_rent as HTML
+  Parameters: {"reserve"=>{"email"=>"abc@abc", "lpn"=>"1234"}}
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "abc@abc"]]
+Redirected to http://localhost:3000/cars
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:05:01 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (12.4ms)
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (21.6ms)
+Completed 200 OK in 58ms (Views: 54.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/rent?reserve%5Bemail%5D=abc%40abc&reserve%5Blpn%5D=12345" for 127.0.0.1 at 2017-10-04 15:05:06 -0400
+Processing by CarsController#new_rent as HTML
+  Parameters: {"reserve"=>{"email"=>"abc@abc", "lpn"=>"12345"}}
+  [1m[36mReservation Load (0.4ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "abc@abc"]]
+Redirected to http://localhost:3000/cars
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:05:06 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (8.5ms)
+  [1m[36mCar Load (0.6ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (27.2ms)
+Completed 200 OK in 75ms (Views: 71.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/rent?reserve%5Bemail%5D=abc%40abc&reserve%5Blpn%5D=135" for 127.0.0.1 at 2017-10-04 15:05:07 -0400
+Processing by CarsController#new_rent as HTML
+  Parameters: {"reserve"=>{"email"=>"abc@abc", "lpn"=>"135"}}
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "abc@abc"]]
+Redirected to http://localhost:3000/cars
+Completed 302 Found in 4ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:05:07 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (6.3ms)
+  [1m[36mCar Load (0.3ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (23.1ms)
+Completed 200 OK in 56ms (Views: 54.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/rent?reserve%5Bemail%5D=abc%40abc&reserve%5Blpn%5D=123" for 127.0.0.1 at 2017-10-04 15:05:08 -0400
+Processing by CarsController#new_rent as HTML
+  Parameters: {"reserve"=>{"email"=>"abc@abc", "lpn"=>"123"}}
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "abc@abc"]]
+Redirected to http://localhost:3000/cars
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:05:08 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (13.3ms)
+  [1m[36mCar Load (1.0ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (28.5ms)
+Completed 200 OK in 62ms (Views: 57.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:10:10 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 41ms (Views: 39.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/customers/14" for 127.0.0.1 at 2017-10-04 15:10:14 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 40ms (Views: 35.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/customers/14" for 127.0.0.1 at 2017-10-04 15:10:27 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 45ms (Views: 40.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/customers/14" for 127.0.0.1 at 2017-10-04 15:10:37 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 40ms (Views: 38.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/customers/14" for 127.0.0.1 at 2017-10-04 15:10:48 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 58ms (Views: 55.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/customers/14" for 127.0.0.1 at 2017-10-04 15:10:58 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 88ms (Views: 85.8ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2017-10-04 15:11:06 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"lCkjq0VhgzPL0mfKKPYuxZF2aV7a3g8emFhYeMliJpJC7wwxY3AJeC9EG9Kq83iAqXyxZuHdp0rmuA8U8YWOTA=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:11:06 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 31ms (Views: 27.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-10-04 15:11:16 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 44ms (Views: 42.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:11:17 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 39ms (Views: 37.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2017-10-04 15:11:19 -0400
+Processing by CustomersController#new as HTML
+  Rendering customers/new.html.erb within layouts/application
+  Rendered customers/_form.erb (3.7ms)
+  Rendered customers/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 50ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/customers" for 127.0.0.1 at 2017-10-04 15:12:19 -0400
+Processing by CustomersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZQFeidB59gfUVe8geD7D4ERn1ue6JerFYmrMQGpkDYM0nWmaljlX+vJnfCJGOSCcoaotzQn4+qBxSLpZkx3ppw==", "customer"=>{"name"=>"34", "email"=>"qwe@qwe", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create"}
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qwe@qwe"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "password_digest", "authority") VALUES (?, ?, ?, ?)[0m  [["email", "qwe@qwe"], ["name", "34"], ["password_digest", "$2a$10$.tZyRS3Y0JhDjmetR/EoiuhNW6JOPyhTU2yTJa8YmTljmLwGWOFWq"], ["authority", "customer"]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/customers/15
+Completed 302 Found in 144ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/customers/15" for 127.0.0.1 at 2017-10-04 15:12:19 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 41ms (Views: 38.4ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2017-10-04 15:12:23 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6LOXEA5KSkng8M6TRSqD14lp2TKQtONakq1ju2nNf2c+dbiKKFvAAgRmsovHL9WSsWMBCqu3Sw7sTTTXUSrXuQ=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:12:23 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 52ms (Views: 50.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-10-04 15:12:25 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 41ms (Views: 40.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-04 15:12:27 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"u4JsWCVXXtyKnXbL+r9Ug4Frj8KN1L9OHdovclh9I/Es0rqTGu0wQEOLFmL97Xmq5ebeVyH1ciUvlj4ZfdM55Q==", "session"=>{"email"=>"123@123", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "123@123"], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.3ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."email" = ? LIMIT ?[0m  [["email", "123@123"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 101ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:12:27 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 80ms (Views: 76.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/superadmins/1" for 127.0.0.1 at 2017-10-04 15:12:31 -0400
+Processing by SuperadminsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering superadmins/show.html.erb within layouts/application
+  Rendered superadmins/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 40ms (Views: 20.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:12:55 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 41ms (Views: 39.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admins" for 127.0.0.1 at 2017-10-04 15:12:57 -0400
+Processing by AdminsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admins/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authority" = ?[0m  [["authority", "admin"]]
+  Rendered admins/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 37ms (Views: 24.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/admins/11" for 127.0.0.1 at 2017-10-04 15:12:58 -0400
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 53ms (Views: 36.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:12:59 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 46ms (Views: 43.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2017-10-04 15:13:00 -0400
+Processing by CustomersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authority" = ?[0m  [["authority", "customer"]]
+  Rendered customers/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 40ms (Views: 36.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/customers/14" for 127.0.0.1 at 2017-10-04 15:13:01 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 35ms (Views: 32.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/customers/14" for 127.0.0.1 at 2017-10-04 15:13:33 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 45ms (Views: 41.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:13:35 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 37ms (Views: 34.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/superadmins" for 127.0.0.1 at 2017-10-04 15:13:36 -0400
+Processing by SuperadminsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering superadmins/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authority" = ?[0m  [["authority", "super"]]
+  Rendered superadmins/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 38ms (Views: 23.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/superadmins/1" for 127.0.0.1 at 2017-10-04 15:13:37 -0400
+Processing by SuperadminsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering superadmins/show.html.erb within layouts/application
+  Rendered superadmins/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 27ms (Views: 24.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:13:38 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 51ms (Views: 48.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/admins" for 127.0.0.1 at 2017-10-04 15:13:39 -0400
+Processing by AdminsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admins/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authority" = ?[0m  [["authority", "admin"]]
+  Rendered admins/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 47ms (Views: 44.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/admins/11" for 127.0.0.1 at 2017-10-04 15:13:40 -0400
+Processing by AdminsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering admins/show.html.erb within layouts/application
+  Rendered admins/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 50ms (Views: 47.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:13:41 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 40ms (Views: 38.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/customers" for 127.0.0.1 at 2017-10-04 15:13:42 -0400
+Processing by CustomersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering customers/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."authority" = ?[0m  [["authority", "customer"]]
+  Rendered customers/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 23ms (Views: 21.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/customers/15" for 127.0.0.1 at 2017-10-04 15:13:43 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 38ms (Views: 35.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:13:47 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 47ms (Views: 45.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/superadmins/1" for 127.0.0.1 at 2017-10-04 15:13:58 -0400
+Processing by SuperadminsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering superadmins/show.html.erb within layouts/application
+  Rendered superadmins/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 38ms (Views: 34.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:13:59 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 30ms (Views: 28.6ms | ActiveRecord: 0.1ms)
+
+
+hello, it's 2017-10-04 15:14:00 -0400
+  [1m[36mReservation Load (0.7ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT ?[0m  [["id", 136], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "reservations" SET "return_time" = ?, "updated_at" = ? WHERE "reservations"."id" = ?[0m  [["return_time", "2017-10-04 15:14:00.225895"], ["updated_at", "2017-10-04 15:14:00.227445"], ["id", 136]]
+  [1m[35m (25.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[33mUPDATE "reservations" SET "status" = ?, "updated_at" = ? WHERE "reservations"."id" = ?[0m  [["status", "Returned"], ["updated_at", "2017-10-04 15:14:00.261371"], ["id", 136]]
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "567"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cars" SET "status" = ?, "updated_at" = ? WHERE "cars"."id" = ?[0m  [["status", "Available"], ["updated_at", "2017-10-04 15:14:00.277612"], ["id", 5]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "reservations" SET "charge" = ?, "updated_at" = ? WHERE "reservations"."id" = ?[0m  [["charge", 1.87], ["updated_at", "2017-10-04 15:14:00.286026"], ["id", 136]]
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "notifications" ("email", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "abc@abc"], ["message", "You do not return the car on time !"], ["created_at", "2017-10-04 15:14:00.310627"], ["updated_at", "2017-10-04 15:14:00.310627"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+Started DELETE "/logout" for 127.0.0.1 at 2017-10-04 15:14:03 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"21KKPQ3W2Fe4CFpXZk8UycFG6R/+sBwyK1PBJZNO5YINlKWnK8dSHFyeJk/kSkKM+UwxJ8WztGZVs5ZJq6lNXA=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:14:03 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 59ms (Views: 53.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-10-04 15:14:04 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 37ms (Views: 35.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-04 15:14:09 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rQy8AZxozTLxmINQDFbe70qnPpqdmxIxKJy89RoYFBg6XGrKo9KjrjiO4/kLBPPGLipvDzG631oa0K2eP7YODA==", "session"=>{"email"=>"qwe@qwe", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qwe@qwe"], ["LIMIT", 1]]
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 130ms (Views: 36.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-04 15:14:12 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PQXm7CMZYPqaJ7oqYBRZOJ2rLmzIK5Nsua1vCx8lu+nrw8l2BQjqsX6xxjLiEQ99paH2VPMoOzjHTThnJ8ITNw==", "session"=>{"email"=>"qwe@qwe", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qwe@qwe"], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.9ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."email" = ? LIMIT ?[0m  [["email", "qwe@qwe"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 96ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:14:12 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 50ms (Views: 46.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:14:13 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (4.0ms)
+  [1m[36mCar Load (0.4ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 52ms (Views: 50.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/reserve?reserve%5Bemail%5D=qwe%40qwe&reserve%5Blpn%5D=12345" for 127.0.0.1 at 2017-10-04 15:14:20 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"reserve"=>{"email"=>"qwe@qwe", "lpn"=>"12345"}}
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "qwe@qwe"]]
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (14.9ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (24.3ms)
+Completed 200 OK in 69ms (Views: 47.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/reserve" for 127.0.0.1 at 2017-10-04 15:14:22 -0400
+Processing by CarsController#create_reserve as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YQqPP1BHI8eiFV3qWb0ISAAcGYoziOw/F4Fk/hfQfe2F7iSKGsGIG7n9PYQh1B9gDLlIyG9tAvmMHk2vs5CVCg==", "reservation"=>{"email"=>"qwe@qwe", "lpn"=>"12345", "expect_start_time(1i)"=>"2017", "expect_start_time(2i)"=>"10", "expect_start_time(3i)"=>"4", "expect_start_time(4i)"=>"15", "expect_start_time(5i)"=>"14", "expect_return_time(1i)"=>"2017", "expect_return_time(2i)"=>"10", "expect_return_time(3i)"=>"4", "expect_return_time(4i)"=>"15", "expect_return_time(5i)"=>"14"}, "commit"=>"Create"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qwe@qwe"], ["LIMIT", 1]]
+  [1m[36mReservation Load (0.4ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "qwe@qwe"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+time : 2017-10-04 15:14:00 -0400 ---- 2017-10-04 15:14:22 -0400
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+Redirected to http://localhost:3000/reserve?reserve%5Bemail%5D=qwe%40qwe&reserve%5Blpn%5D=12345
+Completed 302 Found in 15ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/reserve?reserve%5Bemail%5D=qwe%40qwe&reserve%5Blpn%5D=12345" for 127.0.0.1 at 2017-10-04 15:14:22 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"reserve"=>{"email"=>"qwe@qwe", "lpn"=>"12345"}}
+  [1m[36mReservation Load (0.7ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "qwe@qwe"]]
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (16.0ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 72ms (Views: 54.9ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/reserve" for 127.0.0.1 at 2017-10-04 15:14:27 -0400
+Processing by CarsController#create_reserve as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"M+tD62POcxP0Y+rm54X4POyFdINopMQafYcG0X0294LlLWxxRd/5WBD1lv5lgK551I+su1OnbE4DZ1G9RdFfXA==", "reservation"=>{"email"=>"qwe@qwe", "lpn"=>"12345", "expect_start_time(1i)"=>"2017", "expect_start_time(2i)"=>"10", "expect_start_time(3i)"=>"4", "expect_start_time(4i)"=>"15", "expect_start_time(5i)"=>"18", "expect_return_time(1i)"=>"2017", "expect_return_time(2i)"=>"10", "expect_return_time(3i)"=>"4", "expect_return_time(4i)"=>"15", "expect_return_time(5i)"=>"23"}, "commit"=>"Create"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qwe@qwe"], ["LIMIT", 1]]
+  [1m[36mReservation Load (0.5ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "qwe@qwe"]]
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "reservations" ("email", "lpn", "expect_start_time", "expect_return_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "qwe@qwe"], ["lpn", "12345"], ["expect_start_time", "2017-10-04 15:18:00"], ["expect_return_time", "2017-10-04 15:23:00"], ["created_at", "2017-10-04 15:14:27.028506"], ["updated_at", "2017-10-04 15:14:27.028506"]]
+  [1m[35m (17.6ms)[0m  [1m[36mcommit transaction[0m
+time_to_do: 2017-10-04 15:19:00 -0400, id: 137
+  [1m[36mCar Load (1.0ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "12345"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "cars" SET "status" = ?, "updated_at" = ? WHERE "cars"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-04 15:14:27.081749"], ["id", 10]]
+  [1m[35m (27.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "reservations" SET "status" = ?, "updated_at" = ? WHERE "reservations"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-04 15:14:27.127927"], ["id", 137]]
+  [1m[35m (31.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/cars/10
+Completed 302 Found in 162ms (ActiveRecord: 81.2ms)
+
+
+Started GET "/cars/10" for 127.0.0.1 at 2017-10-04 15:14:27 -0400
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering cars/show.html.erb within layouts/application
+  Rendered cars/show.html.erb within layouts/application (1.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 47ms (Views: 44.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/customers/15" for 127.0.0.1 at 2017-10-04 15:14:36 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 59ms (Views: 56.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/customer_reservation?customer%5Bemail%5D=qwe%40qwe" for 127.0.0.1 at 2017-10-04 15:14:38 -0400
+Processing by CustomersController#reservation as HTML
+  Parameters: {"customer"=>{"email"=>"qwe@qwe"}}
+  Rendering customers/reservation.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ?[0m  [["email", "qwe@qwe"]]
+  Rendered customers/reservation.html.erb within layouts/application (2.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 51ms (Views: 33.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/customers/15" for 127.0.0.1 at 2017-10-04 15:14:50 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 29ms (Views: 26.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/cars/10" for 127.0.0.1 at 2017-10-04 15:17:27 -0400
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  Rendering cars/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered cars/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 52ms (Views: 48.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/customer_reservation?customer%5Bemail%5D=qwe%40qwe" for 127.0.0.1 at 2017-10-04 15:17:29 -0400
+Processing by CustomersController#reservation as HTML
+  Parameters: {"customer"=>{"email"=>"qwe@qwe"}}
+  Rendering customers/reservation.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ?[0m  [["email", "qwe@qwe"]]
+  Rendered customers/reservation.html.erb within layouts/application (6.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 85ms (Views: 81.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:17:31 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 47ms (Views: 45.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/customers/15" for 127.0.0.1 at 2017-10-04 15:17:33 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 44ms (Views: 41.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/customer_reservation?customer%5Bemail%5D=qwe%40qwe" for 127.0.0.1 at 2017-10-04 15:17:34 -0400
+Processing by CustomersController#reservation as HTML
+  Parameters: {"customer"=>{"email"=>"qwe@qwe"}}
+  Rendering customers/reservation.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ?[0m  [["email", "qwe@qwe"]]
+  Rendered customers/reservation.html.erb within layouts/application (3.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 40ms (Views: 38.1ms | ActiveRecord: 0.5ms)
+
+
+hello, it's 2017-10-04 15:19:00 -0400
+  [1m[36mReservation Load (0.9ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT ?[0m  [["id", 137], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (22.8ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 137]]
+  [1m[35m (7.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35mSQL (4.4ms)[0m  [1m[33mUPDATE "cars" SET "status" = 'Available' WHERE "cars"."lpn" = ?[0m  [["lpn", "12345"]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "notifications" ("email", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "qwe@qwe"], ["message", "You do not check out the car on time !"], ["created_at", "2017-10-04 15:19:00.068258"], ["updated_at", "2017-10-04 15:19:00.068258"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Started DELETE "/logout" for 127.0.0.1 at 2017-10-04 15:19:12 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"meAuY4kXs4Fv33dJIcrVz47x3LagVhRlIzkXcCs+BvZPJgH5rwY5yotJC1Gjz4OKtvsEjptVvDFd2UAcE9muKA=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:19:12 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 50ms (Views: 48.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-10-04 15:19:13 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 65ms (Views: 61.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-04 15:19:17 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GyhksBANJPxegtCsDYkTLT7aDN6E0Kto1WM7xRD7YNKMeLJ7L7dKYJeUsAUK2z4EWlddSyjxZgPnLyquNVV6xg==", "session"=>{"email"=>"qwe@qwe", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "qwe@qwe"], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.5ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."email" = ? LIMIT ?[0m  [["email", "qwe@qwe"], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "notifications" WHERE "notifications"."id" = ?[0m  [["id", 25]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 98ms (ActiveRecord: 5.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:19:17 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 71ms (Views: 69.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:19:20 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 53ms (Views: 47.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:19:21 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (7.5ms)
+  [1m[36mCar Load (1.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (36.1ms)
+Completed 200 OK in 77ms (Views: 73.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/customers/15" for 127.0.0.1 at 2017-10-04 15:19:33 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 39ms (Views: 37.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:20:00 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 41ms (Views: 39.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:20:01 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (4.2ms)
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (22.8ms)
+Completed 200 OK in 59ms (Views: 56.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:20:03 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 33ms (Views: 31.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/customer_reservation?customer%5Bemail%5D=qwe%40qwe" for 127.0.0.1 at 2017-10-04 15:20:04 -0400
+Processing by CustomersController#reservation as HTML
+  Parameters: {"customer"=>{"email"=>"qwe@qwe"}}
+  Rendering customers/reservation.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ?[0m  [["email", "qwe@qwe"]]
+  Rendered customers/reservation.html.erb within layouts/application (1.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 28ms (Views: 25.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:20:05 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 50ms (Views: 49.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/customer_history?customer%5Bemail%5D=qwe%40qwe" for 127.0.0.1 at 2017-10-04 15:20:06 -0400
+Processing by CustomersController#history as HTML
+  Parameters: {"customer"=>{"email"=>"qwe@qwe"}}
+  Rendering customers/history.html.erb within layouts/application
+  [1m[36mReservation Load (0.6ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ?[0m  [["email", "qwe@qwe"]]
+  Rendered customers/history.html.erb within layouts/application (3.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 79ms (Views: 40.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:20:09 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 65ms (Views: 63.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/customers/15" for 127.0.0.1 at 2017-10-04 15:20:11 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 48ms (Views: 45.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/customer_history?customer%5Bemail%5D=qwe%40qwe" for 127.0.0.1 at 2017-10-04 15:20:15 -0400
+Processing by CustomersController#history as HTML
+  Parameters: {"customer"=>{"email"=>"qwe@qwe"}}
+  Rendering customers/history.html.erb within layouts/application
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ?[0m  [["email", "qwe@qwe"]]
+  Rendered customers/history.html.erb within layouts/application (4.0ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 49ms (Views: 46.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:20:16 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 32ms (Views: 30.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/customers/15" for 127.0.0.1 at 2017-10-04 15:20:18 -0400
+Processing by CustomersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering customers/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered customers/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 34ms (Views: 31.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/customers/15/edit" for 127.0.0.1 at 2017-10-04 15:20:19 -0400
+Processing by CustomersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendering customers/edit.html.erb within layouts/application
+  Rendered customers/_form.erb (4.4ms)
+  Rendered customers/edit.html.erb within layouts/application (7.7ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 78ms (Views: 51.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:20:21 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 24ms (Views: 22.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:20:34 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (3.0ms)
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (27.9ms)
+Completed 200 OK in 77ms (Views: 74.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/cars?utf8=%E2%9C%93&car%5Blpn%5D=1234&car%5Bmanufactuere%5D=&car%5Bmodel%5D=&car%5Bhrr%5D=&car%5Bstyle%5D=&car%5Blocation%5D=&commit=Search" for 127.0.0.1 at 2017-10-04 15:20:39 -0400
+Processing by CarsController#index as HTML
+  Parameters: {"utf8"=>"✓", "car"=>{"lpn"=>"1234", "manufactuere"=>"", "model"=>"", "hrr"=>"", "style"=>"", "location"=>""}, "commit"=>"Search"}
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (3.9ms)
+  [1m[36mCar Load (0.4ms)[0m  [1m[34mSELECT "cars".* FROM "cars" WHERE "cars"."lpn" = ?[0m  [["lpn", "1234"]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 52ms (Views: 49.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:22:12 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 40ms (Views: 36.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:36:03 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (2.8ms)
+  [1m[36mCar Load (0.3ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (22.1ms)
+Completed 200 OK in 65ms (Views: 63.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/cars/5" for 127.0.0.1 at 2017-10-04 15:36:05 -0400
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering cars/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered cars/show.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 40ms (Views: 38.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/carhistory?car%5Bcarlpn%5D=567" for 127.0.0.1 at 2017-10-04 15:36:07 -0400
+Processing by CarsController#history as HTML
+  Parameters: {"car"=>{"carlpn"=>"567"}}
+  Rendering cars/history.html.erb within layouts/application
+  [1m[36mReservation Load (0.4ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."lpn" = ?[0m  [["lpn", "567"]]
+  Rendered cars/history.html.erb within layouts/application (5.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 48ms (Views: 45.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:36:24 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 41ms (Views: 40.4ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2017-10-04 15:36:26 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6yVDl/o9ISoBcW4zRT6vP4vs5ux6cZnEnfqEGYFGMvc942wN3CyrYeXnEivHO/l6s+Y+1EFyMZDjGtN1uaGaKQ=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:36:26 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 49ms (Views: 47.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-10-04 15:36:27 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 54ms (Views: 52.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-04 15:36:30 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1dhTzHfKyK+egZQob9V3BDMlJFo3J9tvFCNNOE/M8rFCiIUHSHCmM1eX9IFoh1otV6h1z5sGFgQmb1xTamLopQ==", "session"=>{"email"=>"123@123", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "123@123"], ["LIMIT", 1]]
+  [1m[36mNotification Load (1.1ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."email" = ? LIMIT ?[0m  [["email", "123@123"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 95ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:36:30 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 42ms (Views: 40.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:36:37 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (3.7ms)
+  [1m[36mCar Load (0.4ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 42ms (Views: 40.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:36:40 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 38ms (Views: 37.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 127.0.0.1 at 2017-10-04 15:36:40 -0400
+Processing by CarsController#index_reserve as HTML
+  Rendering cars/index_reserve.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  Rendered cars/index_reserve.html.erb within layouts/application (11.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 32ms (Views: 24.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:36:45 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 53ms (Views: 51.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:36:48 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (2.3ms)
+  [1m[36mCar Load (0.3ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 36ms (Views: 34.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reserve?reserve%5Blpn%5D=567" for 127.0.0.1 at 2017-10-04 15:36:51 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"reserve"=>{"lpn"=>"567"}}
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" IS NULL AND "reservations"."status" IN ('Checkout', 'Reserved')[0m
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (12.6ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 41ms (Views: 38.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/reserve" for 127.0.0.1 at 2017-10-04 15:37:03 -0400
+Processing by CarsController#create_reserve as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iVrHwKMqvSUqHVv2eFkREzgzCuG5z1OZ90+pnmQO049tvmx16awW+TH1O5gAMAY7NJZbo+UqvV9s0IDPwE47aA==", "reservation"=>{"email"=>"abc@abc", "lpn"=>"567", "expect_start_time(1i)"=>"2017", "expect_start_time(2i)"=>"10", "expect_start_time(3i)"=>"4", "expect_start_time(4i)"=>"15", "expect_start_time(5i)"=>"56", "expect_return_time(1i)"=>"2017", "expect_return_time(2i)"=>"10", "expect_return_time(3i)"=>"4", "expect_return_time(4i)"=>"15", "expect_return_time(5i)"=>"59"}, "commit"=>"Create"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "abc@abc"], ["LIMIT", 1]]
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "abc@abc"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "reservations" ("email", "lpn", "expect_start_time", "expect_return_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "abc@abc"], ["lpn", "567"], ["expect_start_time", "2017-10-04 15:56:00"], ["expect_return_time", "2017-10-04 15:59:00"], ["created_at", "2017-10-04 15:37:03.383602"], ["updated_at", "2017-10-04 15:37:03.383602"]]
+  [1m[35m (3.3ms)[0m  [1m[36mcommit transaction[0m
+time_to_do: 2017-10-04 15:57:00 -0400, id: 138
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "567"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cars" SET "status" = ?, "updated_at" = ? WHERE "cars"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-04 15:37:03.410493"], ["id", 5]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "reservations" SET "status" = ?, "updated_at" = ? WHERE "reservations"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-04 15:37:03.421752"], ["id", 138]]
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/cars/5
+Completed 302 Found in 52ms (ActiveRecord: 14.3ms)
+
+
+Started GET "/cars/5" for 127.0.0.1 at 2017-10-04 15:37:03 -0400
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCar Load (0.5ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering cars/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 44ms (Views: 40.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:37:04 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 29ms (Views: 27.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/reservations" for 127.0.0.1 at 2017-10-04 15:37:05 -0400
+Processing by CarsController#index_reserve as HTML
+  Rendering cars/index_reserve.html.erb within layouts/application
+  [1m[36mReservation Load (1.4ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  Rendered cars/index_reserve.html.erb within layouts/application (30.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 54ms (Views: 51.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/edit?id=138" for 127.0.0.1 at 2017-10-04 15:37:26 -0400
+Processing by CarsController#edit_reserve as HTML
+  Parameters: {"id"=>"138"}
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT ?[0m  [["id", 138], ["LIMIT", 1]]
+  Rendering cars/edit_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (19.9ms)
+  Rendered cars/edit_reserve.html.erb within layouts/application (23.3ms)
+Completed 200 OK in 64ms (Views: 46.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/edit?id=138" for 127.0.0.1 at 2017-10-04 15:37:54 -0400
+Processing by CarsController#edit_reserve as HTML
+  Parameters: {"id"=>"138"}
+  [1m[36mReservation Load (2.6ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT ?[0m  [["id", 138], ["LIMIT", 1]]
+  Rendering cars/edit_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (15.7ms)
+  Rendered cars/edit_reserve.html.erb within layouts/application (26.2ms)
+Completed 200 OK in 70ms (Views: 63.3ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/edit?id=138" for 127.0.0.1 at 2017-10-04 15:38:08 -0400
+Processing by CarsController#edit_reserve as HTML
+  Parameters: {"id"=>"138"}
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT ?[0m  [["id", 138], ["LIMIT", 1]]
+  Rendering cars/edit_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (29.6ms)
+  Rendered cars/edit_reserve.html.erb within layouts/application (31.8ms)
+Completed 200 OK in 72ms (Views: 69.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/reservations" for 127.0.0.1 at 2017-10-04 15:38:09 -0400
+Processing by CarsController#index_reserve as HTML
+  Rendering cars/index_reserve.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  Rendered cars/index_reserve.html.erb within layouts/application (11.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 59ms (Views: 58.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/reservations" for 127.0.0.1 at 2017-10-04 15:39:15 -0400
+Processing by CarsController#index_reserve as HTML
+  Rendering cars/index_reserve.html.erb within layouts/application
+  [1m[36mReservation Load (0.4ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  Rendered cars/index_reserve.html.erb within layouts/application (10.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 63ms (Views: 60.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/reservations" for 127.0.0.1 at 2017-10-04 15:40:55 -0400
+Processing by CarsController#index_reserve as HTML
+  Rendering cars/index_reserve.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  Rendered cars/index_reserve.html.erb within layouts/application (29.3ms)
+  [1m[36mUser Load (6.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 71ms (Views: 63.3ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/cancel?reservation%5Blpn%5D=567" for 127.0.0.1 at 2017-10-04 15:41:00 -0400
+Processing by CustomersController#cancel as HTML
+  Parameters: {"reservation"=>{"lpn"=>"567"}}
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."lpn" = ? AND "reservations"."status" = ? ORDER BY "reservations"."id" ASC LIMIT ?[0m  [["lpn", "567"], ["status", "Reserved"], ["LIMIT", 1]]
+  [1m[36mCar Load (0.1ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "567"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cars" SET "status" = ?, "updated_at" = ? WHERE "cars"."id" = ?[0m  [["status", "Available"], ["updated_at", "2017-10-04 15:41:00.824604"], ["id", 5]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 138]]
+  [1m[35m (3.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/cars
+Completed 302 Found in 17ms (ActiveRecord: 8.9ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-04 15:41:00 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (7.0ms)
+  [1m[36mCar Load (0.7ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 40ms (Views: 37.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:41:03 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 22ms (Views: 20.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/reservations" for 127.0.0.1 at 2017-10-04 15:41:04 -0400
+Processing by CarsController#index_reserve as HTML
+  Rendering cars/index_reserve.html.erb within layouts/application
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations"[0m
+  Rendered cars/index_reserve.html.erb within layouts/application (8.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 39ms (Views: 37.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/reservations" for 127.0.0.1 at 2017-10-04 15:42:30 -0400
+Processing by CarsController#index_reserve as HTML
+  [1m[36mReservation Load (0.8ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" LIMIT ?[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 56ms
+
+
+  
+  [1m[36mCACHE Reservation Load (0.0ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" LIMIT ?[0m  [["LIMIT", 11]]
+NoMethodError (undefined method `desc' for #<Reservation::ActiveRecord_Relation:0x0000000390cf38>):
+  
+app/controllers/cars_controller.rb:38:in `index_reserve'
+Started GET "/" for 127.0.0.1 at 2017-10-04 15:44:04 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (61.4ms)
+Completed 200 OK in 103ms (Views: 101.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/reservations" for 127.0.0.1 at 2017-10-04 15:44:06 -0400
+Processing by CarsController#index_reserve as HTML
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (The method .order() must contain arguments.):
+  
+app/controllers/cars_controller.rb:38:in `index_reserve'
+Started GET "/reservations" for 127.0.0.1 at 2017-10-04 15:44:33 -0400
+Processing by CarsController#index_reserve as HTML
+  Rendering cars/index_reserve.html.erb within layouts/application
+  [1m[36mReservation Load (0.5ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" ORDER BY "reservations"."id" DESC[0m
+  Rendered cars/index_reserve.html.erb within layouts/application (36.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 89ms (Views: 81.0ms | ActiveRecord: 5.9ms)
+
+
