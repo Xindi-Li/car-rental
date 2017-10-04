@@ -44,10 +44,13 @@
             <td><%= car.location %></td>
             <td><%= car.status %></td>
             <% if car.status.eql? 'Available' %>
-                <td><%= link_to 'Reserve', reserve_path(:reserve =>{:lpn => car.lpn}) %></td>
-                <td><%= link_to 'Rent', rent_path(:reserve =>{:lpn => car.lpn}) %></td>
+                <td><%= link_to 'Reserve', reserve_path(:reserve => {:lpn => car.lpn}) %></td>
+                <td><%= link_to 'Rent', rent_path(:reserve => {:lpn => car.lpn}) %></td>
+            <% elsif car.status.eql? 'Reserved' %>
+                <td><%= link_to 'Checkout', checkout_path(:reservation => {:lpn => car.lpn}) %></td>
+                <td><%= link_to 'Cancel', cancel_path(:reservation => {:lpn => car.lpn}) %></td>
             <% else %>
-                <td></td>
+                <td><%= link_to 'Return', returncar_path(:reservation => {:lpn => car.lpn}) %></td>
                 <td></td>
             <% end %>
             <td><%= link_to 'Show', car %></td>

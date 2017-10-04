@@ -33,14 +33,18 @@
 <p>
   <strong>Status</strong>
   <%= @car.status %>
+  <% if @car.status =='Reserved' or @car.status =='Checkout' %>
+      by <%= get_user @car.lpn %>
+  <% end %>
 </p>
 <% if @car.img_attach? %>
     <strong>Image</strong>
-    <%= image_tag (@car.img_attach.url),class: 'img-responsive center-block' %>
+    <%= image_tag (@car.img_attach.url), class: 'img-responsive center-block' %>
 <% end %>
 <p>
-  <%= link_to 'Current reservation', customer_reservation_path(:customer => {:email => current_user.email}) %>
-
+  <% if login_authority =='Customer' %>
+      <%= link_to 'Current reservation', customer_reservation_path(:customer => {:email => current_user.email}) %>
+  <% end %>
 </p>
 
 <p>

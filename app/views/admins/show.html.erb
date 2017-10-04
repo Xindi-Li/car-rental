@@ -10,5 +10,7 @@
   <%= @admin.name %>
 </p>
 
-<%= link_to 'Edit', edit_admin_path(@admin) %> |
+<% if @admin.email.eql? current_user.email %>
+    <%= link_to 'Edit', edit_admin_path(@admin) %> |
+<% end %>
 <%= link_to 'Back', admins_path %>

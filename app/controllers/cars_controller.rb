@@ -59,7 +59,7 @@ class CarsController < ApplicationController
     respond_to do |format|
       user = User.find_by_email(@reservation.email)
       if !user
-        format.html {redirect_to reserve_path(:lpn => @reservation.lpn), notice: 'Customer does not exist'}
+        format.html {redirect_to reserve_path(:reserve =>{:lpn => @reservation.lpn} ), notice: 'Customer does not exist'}
       else
         @reservation1 = Reservation.where(email: user.email).where(status: ["Checkout","Reserved"])
         if @reservation1 != []
@@ -97,7 +97,7 @@ class CarsController < ApplicationController
     respond_to do |format|
       user = User.find_by_email(@reservation.email)
       if !user
-        format.html {redirect_to reserve_path(:lpn => @reservation.lpn), notice: 'Customer does not exist'}
+        format.html {redirect_to rent_path(:reserve =>{:lpn => @reservation.lpn}), notice: 'Customer does not exist'}
       end
       if @reservation.save
         return_timer @reservation.expect_return_time, @reservation.id, @reservation.lpn

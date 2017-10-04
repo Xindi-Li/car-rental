@@ -26,7 +26,7 @@
 
 
     <%= f.label :style %>
-    <%= f.text_field :style %>
+    <%= select_tag "car[style]", "<option value='Coupe'>Coupe</option><option value='Sedan'>Sedan</option><option value='SUV'>SUV</option>".html_safe %>
 
     <%= f.label :location %>
     <%= f.text_field :location %>

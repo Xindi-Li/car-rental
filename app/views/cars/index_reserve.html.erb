@@ -30,9 +30,7 @@
         <td><%= r.charge %></td>
         <% if r.status == "Reserved" %>
             <td><%= link_to 'Modify', edit_path(:id => r.id) %></td>
-            <td><%= link_to 'Cancel', cancel_path(:reservation => {:lpn => r.lpn})%></td>
         <% else %>
-            <td></td>
             <td></td>
         <% end %>
       </tr>

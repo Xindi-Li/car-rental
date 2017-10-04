@@ -47,4 +47,9 @@ module CarsHelper
       flash[:warning] = message
     end
   end
+
+  def get_user lpn
+    user = Reservation.where(:lpn => lpn).where(:status => ['Checkout','Reserved']).first
+    user.email
+  end
 end
