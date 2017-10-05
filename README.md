@@ -17,6 +17,11 @@ when superadmin or admin tries to delete a car which is checked out then, it wou
 
 when superadmin or admin tries to delete a customer who checks out a car then, it would failed to delete the customer, if the customer just hold a reservation, the reservation would be deleted along with the customer, and the status of the car would change to available, the history reservations of the customer are deleted too.
 
+### Time limitations
+
+1. If the car is not picked up 30 minutes after the pickup time, next time the cutomer log in, he will see a warning on the welcome page (To see the notification, the customer has to log in again)
+2. If the car is not returned in time, it will be the same as the first one.
+
 ### Log in
 
 1. Click "Login" in the home page.
