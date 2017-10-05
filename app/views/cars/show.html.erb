@@ -50,9 +50,11 @@
 <p>
   <%= link_to 'Checkout History', carhistory_path(:car => {:carlpn => @car.lpn}) %>
 </p>
-<p>
-  <%= link_to 'Edit', edit_car_path(@car) %>
-</p>
+<% if login_authority == 'Customer' %>
+    <p>
+      <%= link_to 'Edit', edit_car_path(@car) %>
+    </p>
+<% end %>
 <p>
   <%= link_to 'Back', cars_path %>
 </p>
