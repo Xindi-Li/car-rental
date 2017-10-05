@@ -208,7 +208,6 @@ class CarsController < ApplicationController
     if current_time < @reservation.expect_start_time
       respond_to do |format|
         format.html {redirect_to customer_reservation_path(:customer => {:email => @reservation.email}), notice: "Can't checkout a car before your checkout time."}
-        return
       end
     else
       return_timer @reservation.expect_return_time, @reservation.id, @reservation.lpn
@@ -217,7 +216,9 @@ class CarsController < ApplicationController
 
       @car = Car.find_by_lpn(lpn)
       @car.update_attribute(:status, "Checkout")
-      @car
+      respond_to do |format|
+        format.html {redirect_to @car, notice:"Checkout successfully"}
+      end
     end
   end
 
