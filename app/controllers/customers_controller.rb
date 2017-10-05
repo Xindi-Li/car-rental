@@ -63,6 +63,7 @@ class CustomersController < ApplicationController
     if reservation != []
       respond_to do |format|
         format.html {redirect_to customers_url, notice: "Can't delete this customer as he/she still has a car checked out!"}
+        return
       end
     else
       reservations = Reservation.where(email: email)

@@ -42,10 +42,11 @@ class CarsController < ApplicationController
   def new_reserve
     if params[:reserve]
       email = params[:reserve][:email]
-      @reservation1 = Reservation.where(email: email).where(status: ["Checkout","Reserved"])
+      @reservation1 = Reservation.where(email: email).where(status: ["Checkout", "Reserved"])
       if @reservation1 != []
         respond_to do |format|
           format.html {redirect_to cars_url, notice: "You can't reserve more than one car at the same time."}
+          return
         end
       end
     end
@@ -55,19 +56,18 @@ class CarsController < ApplicationController
 
   def create_reserve
     @reservation = Reservation.new(reservation_params)
-
     respond_to do |format|
       user = User.find_by_email(@reservation.email)
       if !user
-        format.html {redirect_to reserve_path(:reserve =>{:lpn => @reservation.lpn} ), notice: 'Customer does not exist'}
+        format.html {redirect_to reserve_path(:reserve => {:lpn => @reservation.lpn}), notice: 'Customer does not exist'}
       else
-        @reservation1 = Reservation.where(email: user.email).where(status: ["Checkout","Reserved"])
+        @reservation1 = Reservation.where(email: user.email).where(status: ["Checkout", "Reserved"])
         if @reservation1 != []
           format.html {redirect_to cars_url, notice: "The customer already has one reservation."}
         end
       end
 
-      if @reservation.save
+      if user && @reservation1 == [] && @reservation.save
         checkout_timer @reservation.expect_start_time, @reservation.id, @reservation.lpn
         @car = Car.find_by_lpn(@reservation.lpn)
         if @car.status == "Available"
@@ -97,9 +97,15 @@ class CarsController < ApplicationController
     respond_to do |format|
       user = User.find_by_email(@reservation.email)
       if !user
-        format.html {redirect_to rent_path(:reserve =>{:lpn => @reservation.lpn}), notice: 'Customer does not exist'}
+        format.html {redirect_to reserve_path(:reserve => {:lpn => @reservation.lpn}), notice: 'Customer does not exist'}
+      else
+        @reservation1 = Reservation.where(email: user.email).where(status: ["Checkout", "Reserved"])
+        if @reservation1 != []
+          format.html {redirect_to cars_url, notice: "The customer already has one reservation."}
+        end
       end
-      if @reservation.save
+
+      if user && @reservation1 == [] && @reservation.save
         return_timer @reservation.expect_return_time, @reservation.id, @reservation.lpn
         @reservation.update_attribute(:expect_start_time, Time.now)
         @car = Car.find_by_lpn(@reservation.lpn)
@@ -202,6 +208,7 @@ class CarsController < ApplicationController
     if current_time < @reservation.expect_start_time
       respond_to do |format|
         format.html {redirect_to customer_reservation_path(:customer => {:email => @reservation.email}), notice: "Can't checkout a car before your checkout time."}
+        return
       end
     else
       return_timer @reservation.expect_return_time, @reservation.id, @reservation.lpn
