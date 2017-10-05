@@ -2,8 +2,9 @@
     <% if login_authority == "customer" %>
         <%= f.hidden_field :email, :value => current_user.email %>
     <% else %>
-        <%= f.label :email,"Customer Email" %>
-        <%= f.email_field :email %>
+        <%= f.label :email, "Customer Email" %>
+        <% options = options_from_collection_for_select(User.where(:authority => 'customer'),'email','email') %>
+        <%= f.select :email, options %>
     <% end %>
     <%= f.hidden_field :lpn %>
 
