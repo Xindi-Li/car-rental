@@ -9,8 +9,8 @@ class Reservation < ApplicationRecord
 			errors.add(:expect_start_time, "should be within 7 days from now")
 		elsif  expect_return_time < Time.now || expect_return_time <= expect_start_time
 			errors.add(:expect_return_time, "should be later than expect start time!")
-		elsif expect_return_time - expect_start_time > 10.hours
-			errors.add(:expect_return_time, :expect_start_time, "Total rental time should be no more than 10 hours.")
+		elsif expect_return_time - expect_start_time > 10.hours || expect_return_time - expect_start_time < 1.hour
+			errors.add(:expect_return_time, "Total rental time should between 1 hour and 10 hours")
 		end
 	end
 				
