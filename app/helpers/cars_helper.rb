@@ -19,9 +19,9 @@ module CarsHelper
 
   def return_timer time, id, lpn
     scheduler = Rufus::Scheduler.new
-    time_to_do = time
+    time_to_do = Reservation.find(id).expect_return_time
     Rails.logger.info "time_to_do: #{time_to_do}, id: #{id}"
-    scheduler.at time do
+    scheduler.at time_to_do do
       Rails.logger.info "hello, it's #{Time.now}"
       reservation = Reservation.find(id)
       if reservation&&reservation.status == 'Checkout'
