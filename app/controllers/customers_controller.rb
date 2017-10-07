@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_action :has_authority?,except: [:new,:show, :create, :edit, :history, :reservation, :cancel]
+  
 
   # GET /customers
   # GET /customers.json
