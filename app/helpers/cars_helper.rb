@@ -3,7 +3,7 @@ module CarsHelper
 
   def checkout_timer time, id, lpn
     scheduler = Rufus::Scheduler.new
-    time_to_do = time + 31.minutes
+    time_to_do = (time + 31.minutes).strftime("%Y-%m-%d %H:%M:%S %z")
     Rails.logger.info "time_to_do: #{time_to_do}, id: #{id}"
     scheduler.at time_to_do do
       Rails.logger.info "hello, it's #{Time.now}"
@@ -19,7 +19,7 @@ module CarsHelper
 
   def return_timer time, id, lpn
     scheduler = Rufus::Scheduler.new
-    time_to_do = time
+    time_to_do = time.strftime("%Y-%m-%d %H:%M:%S %z")
     Rails.logger.info "time_to_do: #{time_to_do}, id: #{id}"
     scheduler.at time_to_do do
       Rails.logger.info "hello, it's #{Time.now}"
