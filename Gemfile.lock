@@ -75,7 +75,7 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.2)
     erubi (1.6.1)
-    et-orbi (1.0.6)
+    et-orbi (1.0.7)
       tzinfo
     excon (0.59.0)
     execjs (2.7.0)
@@ -358,6 +358,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   carrierwave (= 1.1.0)
   coffee-rails (~> 4.2)
+  et-orbi (= 1.0.7)
   fog (= 1.40.0)
   jbuilder (~> 2.5)
   jquery-rails (= 4.3.1)

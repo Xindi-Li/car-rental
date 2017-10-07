@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'et-orbi', '1.0.7'
 gem 'rufus-scheduler'
 gem 'bcrypt',  '3.1.11'
 gem 'carrierwave', '1.1.0'
