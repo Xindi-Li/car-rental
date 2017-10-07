@@ -19,8 +19,9 @@ when superadmin or admin tries to delete a customer who checks out a car then, i
 
 ### Time limitations
 
-1. If the car is not picked up 30 minutes after the pickup time, next time the cutomer log in, he will see a warning on the welcome page (To see the notification, the customer has to log in again)
+1. If the car is not picked up 30 minutes after the pickup time, next time the cutomer log in, he will see a notification on the welcome page (To see the notification, the customer has to log in again)
 2. If the car is not returned in time, it will be the same as the first one.
+3. **To test the these two feature, you have to make some requests at least every twenty to thirty minutes to prevent heroku from sleeping due to long-time idling. If heroku sleeps, the scheduler will not be triggerd on time.**
 
 ### Log in
 
