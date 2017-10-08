@@ -61513,3 +61513,297 @@ Processing by WelcomeController#index as HTML
 Completed 200 OK in 65ms (Views: 58.9ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-10-06 23:43:04 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (345.6ms)
+Completed 200 OK in 713ms (Views: 373.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-06 23:43:33 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (17.5ms)
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (126.9ms)
+Completed 200 OK in 165ms (Views: 158.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/reserve?reserve%5Bemail%5D=abc%40abc&reserve%5Blpn%5D=567" for 127.0.0.1 at 2017-10-06 23:43:47 -0400
+Processing by CarsController#new_reserve as HTML
+  Parameters: {"reserve"=>{"email"=>"abc@abc", "lpn"=>"567"}}
+  [1m[36mReservation Load (0.3ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "abc@abc"]]
+  Rendering cars/new_reserve.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered cars/_reserve_form.html.erb (21.2ms)
+  Rendered cars/new_reserve.html.erb within layouts/application (25.7ms)
+Completed 200 OK in 91ms (Views: 40.0ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/reserve" for 127.0.0.1 at 2017-10-06 23:43:55 -0400
+Processing by CarsController#create_reserve as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wdl8YKmvBokdqBoh2gVz/5C1uI2cAqWrBREK/Cp9fRJlgrvzud+wrDHeXIhyPUa97FW9+QhMNyjJYyCUwfg49Q==", "reservation"=>{"email"=>"abc@abc", "lpn"=>"567", "expect_start_time(1i)"=>"2017", "expect_start_time(2i)"=>"10", "expect_start_time(3i)"=>"6", "expect_start_time(4i)"=>"23", "expect_start_time(5i)"=>"45", "expect_return_time(1i)"=>"2017", "expect_return_time(2i)"=>"10", "expect_return_time(3i)"=>"6", "expect_return_time(4i)"=>"23", "expect_return_time(5i)"=>"48"}, "commit"=>"Create"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "abc@abc"], ["LIMIT", 1]]
+  [1m[36mReservation Load (0.2ms)[0m  [1m[34mSELECT "reservations".* FROM "reservations" WHERE "reservations"."email" = ? AND "reservations"."status" IN ('Checkout', 'Reserved')[0m  [["email", "abc@abc"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "reservations" ("email", "lpn", "expect_start_time", "expect_return_time", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "abc@abc"], ["lpn", "567"], ["expect_start_time", "2017-10-06 23:45:00"], ["expect_return_time", "2017-10-06 23:48:00"], ["created_at", "2017-10-06 23:43:55.751643"], ["updated_at", "2017-10-06 23:43:55.751643"]]
+  [1m[35m (7.5ms)[0m  [1m[36mcommit transaction[0m
+time_to_do: 2017-10-06 23:46:00 -0400, id: 181
+  [1m[36mCar Load (0.3ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "567"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "cars" SET "status" = ?, "updated_at" = ? WHERE "cars"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-06 23:43:55.778604"], ["id", 5]]
+  [1m[35m (4.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "reservations" SET "status" = ?, "updated_at" = ? WHERE "reservations"."id" = ?[0m  [["status", "Reserved"], ["updated_at", "2017-10-06 23:43:55.803577"], ["id", 181]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/cars/5
+Completed 302 Found in 78ms (ActiveRecord: 19.6ms)
+
+
+Started GET "/cars/5" for 127.0.0.1 at 2017-10-06 23:43:55 -0400
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mCar Load (0.6ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering cars/show.html.erb within layouts/application
+  [1m[36mReservation Load (4.0ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."lpn" = ? AND "reservations"."status" IN ('Checkout', 'Reserved') ORDER BY "reservations"."id" ASC LIMIT ?[0m  [["lpn", "567"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered cars/show.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 67ms (Views: 43.0ms | ActiveRecord: 4.8ms)
+
+
+hello, it's 2017-10-06 23:46:00 -0400
+  [1m[36mReservation Load (0.8ms)[0m  [1m[34mSELECT  "reservations".* FROM "reservations" WHERE "reservations"."id" = ? LIMIT ?[0m  [["id", 181], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "reservations" WHERE "reservations"."id" = ?[0m  [["id", 181]]
+  [1m[35m (20.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35mSQL (10.2ms)[0m  [1m[33mUPDATE "cars" SET "status" = 'Available' WHERE "cars"."lpn" = ?[0m  [["lpn", "567"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "notifications" ("email", "message", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "abc@abc"], ["message", "You do not check out the car on time !"], ["created_at", "2017-10-06 23:46:00.153672"], ["updated_at", "2017-10-06 23:46:00.153672"]]
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+Started DELETE "/logout" for 127.0.0.1 at 2017-10-06 23:46:06 -0400
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"o/E2vg2lXm3NIYkPrcmTMaJiKI9zTa0PnlH4s2/mYBRZmj8RwK/x0O82pthGEokVnU5MRUSD/dV/CYmGX/xSiA=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-06 23:46:06 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 63ms (Views: 59.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-10-06 23:46:15 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 74ms (Views: 71.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-06 23:46:19 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8ZmXUBnRzmvVbWFrmT/XcLAAOqMCiSmmQp4UbwZtm+FIEEyxLehovfTCLBnt893PVh4tc0AWcfacTplUeLOhRQ==", "session"=>{"email"=>"abc@abc", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "abc@abc"], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.2ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."email" = ? LIMIT ?[0m  [["email", "abc@abc"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "notifications" WHERE "notifications"."id" = ?[0m  [["id", 32]]
+  [1m[35m (19.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 131ms (ActiveRecord: 21.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-06 23:46:19 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 75ms (Views: 67.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-06 23:46:21 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 38ms (Views: 35.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 18:41:11 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (338.1ms)
+Completed 200 OK in 915ms (Views: 419.7ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2017-10-08 18:41:14 -0400
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (178.5ms)
+Completed 200 OK in 228ms (Views: 214.7ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-10-08 18:41:18 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xMDeXy9yDUll2d+8NhfZtc0scKrGvQuQwc/sxWIXsCgVt/PfKtu2M0Ix7Mcdq8KlED1mLby1xqRIl2kI9dj/Rg==", "session"=>{"email"=>"123@123", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "123@123"], ["LIMIT", 1]]
+  [1m[36mNotification Load (0.1ms)[0m  [1m[34mSELECT  "notifications".* FROM "notifications" WHERE "notifications"."email" = ? LIMIT ?[0m  [["email", "123@123"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 455ms (ActiveRecord: 23.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 18:41:18 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 26ms (Views: 25.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-08 18:41:21 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (3.6ms)
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (25.9ms)
+Completed 200 OK in 62ms (Views: 43.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/cars/new" for 127.0.0.1 at 2017-10-08 18:41:25 -0400
+Processing by CarsController#new as HTML
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (27.4ms)
+  Rendered cars/new.html.erb within layouts/application (45.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 80ms (Views: 75.6ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/cars" for 127.0.0.1 at 2017-10-08 18:41:31 -0400
+Processing by CarsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6/JVacpBahakIujcT1k5d0yXHQ0biA0wGDT4VcVDA2UR6NMtPpNzOvWAuc8LTj2eaSaCN9VbiXHq9yK5+ZKsWQ==", "car"=>{"lpn"=>"1", "manufactuere"=>"1", "model"=>"1", "hrr"=>"1", "style"=>"Coupe", "location"=>"1"}, "commit"=>"Create"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCar Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "1"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (4.9ms)
+  Rendered cars/new.html.erb within layouts/application (6.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 70ms (Views: 35.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/cars" for 127.0.0.1 at 2017-10-08 18:41:38 -0400
+Processing by CarsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"knCTppvRDBD0P5a/CVgi+cwEpC02fDp7nwq0gIqIfW8ohA3zIaWOp7+6pz8CU13PFCQ6I/e85tKyJ3OGZ1geCQ==", "car"=>{"lpn"=>"123456", "manufactuere"=>"1", "model"=>"1", "hrr"=>"1", "style"=>"Coupe", "location"=>"1"}, "commit"=>"Create"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCar Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "123456"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (9.8ms)
+  Rendered cars/new.html.erb within layouts/application (12.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 58ms (Views: 46.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/cars" for 127.0.0.1 at 2017-10-08 18:41:42 -0400
+Processing by CarsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DQMCx+AeGpHIg0ojJYNnPTtF6kz6u6SJSuv5GXHZTOq395ySWmqYJoMGe6MuiBgL42V0Qjt7eCBnxj4fnAkvjA==", "car"=>{"lpn"=>"123456a", "manufactuere"=>"1", "model"=>"1", "hrr"=>"1", "style"=>"Coupe", "location"=>"1"}, "commit"=>"Create"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCar Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "123456a"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "cars" ("lpn", "manufactuere", "model", "hrr", "style", "location", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["lpn", "123456a"], ["manufactuere", "1"], ["model", "1"], ["hrr", 1.0], ["style", "Coupe"], ["location", "1"], ["status", "Available"], ["created_at", "2017-10-08 18:41:42.966640"], ["updated_at", "2017-10-08 18:41:42.966640"]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/cars/19
+Completed 302 Found in 12ms (ActiveRecord: 5.8ms)
+
+
+Started GET "/cars/19" for 127.0.0.1 at 2017-10-08 18:41:42 -0400
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  Rendering cars/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 48ms (Views: 26.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 18:41:45 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 49ms (Views: 47.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-08 18:41:47 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (2.7ms)
+  [1m[36mCar Load (1.0ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (25.7ms)
+Completed 200 OK in 69ms (Views: 66.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/cars/new" for 127.0.0.1 at 2017-10-08 18:41:50 -0400
+Processing by CarsController#new as HTML
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (11.3ms)
+  Rendered cars/new.html.erb within layouts/application (12.8ms)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 64ms (Views: 61.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/cars" for 127.0.0.1 at 2017-10-08 18:41:57 -0400
+Processing by CarsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ivYPLpJUZv5eZrnk8Yp96sJKTA4GEy9XxLxvlkx4mb1w7IlqZoZ/0g/E6Pe1nXkD5/vTNMjAqxY2f7V6cKk2gQ==", "car"=>{"lpn"=>"qwe", "manufactuere"=>"1", "model"=>"1", "hrr"=>"1", "style"=>"Coupe", "location"=>"1"}, "commit"=>"Create"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCar Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "qwe"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering cars/new.html.erb within layouts/application
+  Rendered cars/_form.html.erb (24.3ms)
+  Rendered cars/new.html.erb within layouts/application (26.2ms)
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 76ms (Views: 69.6ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/cars" for 127.0.0.1 at 2017-10-08 18:42:01 -0400
+Processing by CarsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"s4gks4BNuArjrigrAnxwuJnkUSGs6wI0tk/y0DmKrzgJfLrmOjk6vagrGasJdw+OQcTPL20r3p2bYjXW1FrMXg==", "car"=>{"lpn"=>"qweqweq", "manufactuere"=>"1", "model"=>"1", "hrr"=>"1", "style"=>"Coupe", "location"=>"1"}, "commit"=>"Create"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCar Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "cars" WHERE "cars"."lpn" = ? LIMIT ?[0m  [["lpn", "qweqweq"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "cars" ("lpn", "manufactuere", "model", "hrr", "style", "location", "status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["lpn", "qweqweq"], ["manufactuere", "1"], ["model", "1"], ["hrr", 1.0], ["style", "Coupe"], ["location", "1"], ["status", "Available"], ["created_at", "2017-10-08 18:42:01.150131"], ["updated_at", "2017-10-08 18:42:01.150131"]]
+  [1m[35m (7.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/cars/20
+Completed 302 Found in 19ms (ActiveRecord: 8.4ms)
+
+
+Started GET "/cars/20" for 127.0.0.1 at 2017-10-08 18:42:01 -0400
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mCar Load (0.3ms)[0m  [1m[34mSELECT  "cars".* FROM "cars" WHERE "cars"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  Rendering cars/show.html.erb within layouts/application
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/show.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 67ms (Views: 59.7ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 18:42:02 -0400
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered welcome/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 36ms (Views: 34.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/cars" for 127.0.0.1 at 2017-10-08 18:42:03 -0400
+Processing by CarsController#index as HTML
+  Rendering cars/index.html.erb within layouts/application
+  Rendered cars/_search.html.erb (3.4ms)
+  [1m[36mCar Load (0.2ms)[0m  [1m[34mSELECT "cars".* FROM "cars"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered cars/index.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 60ms (Views: 58.3ms | ActiveRecord: 0.4ms)
+
+
