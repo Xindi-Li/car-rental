@@ -1,5 +1,9 @@
 # README
 
+### Deployment:
+
+URL: https://boiling-fortress-20986.herokuapp.com/
+
 ### Preconfigured admin: 
 
 * Email: 123@123.com, 456@456.com, 789@789.com
